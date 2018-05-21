@@ -25,10 +25,10 @@ public class RecursiveReverse {
     return lastIndex <= 0 ? lastChar.toString() : lastChar + reverse(word.substring(0, lastIndex));
   }
 
-  private static String reverse_simple(String word) {
+  private static String reverseSimple(String word) {
     N++;
     boolean complete = (word == null) || (word.length() <= 1);
-    return complete ? word : reverse_simple(word.substring(1)) + word.charAt(0);
+    return complete ? word : reverseSimple(word.substring(1)) + word.charAt(0);
   }
 
   private static String reverseLowMemory(char[] word) {
@@ -72,7 +72,7 @@ public class RecursiveReverse {
 
     System.out.println();
     TEST.forEach((key, value) -> {
-      String reverse = reverse_simple(key);
+      String reverse = reverseSimple(key);
       System.out.println(reverse + " [iterations: " + N + "] [Expected: '" + value + "']");
       assertThat(reverse, is(value));
       reset();
