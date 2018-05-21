@@ -2,4 +2,4 @@
 
 Collection of code [kata's](https://en.wikipedia.org/wiki/Kata)
 
-* [Reverse string](reverse_string/README.md)
+* [Reverse string](reverse_string)
