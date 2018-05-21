@@ -8,7 +8,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RecursiveReverse {
 
-
   private static final Map<String, String> TEST = new HashMap<>();
 
   static {
@@ -28,10 +27,8 @@ public class RecursiveReverse {
 
   private static String reverse_simple(String word) {
     N++;
-    if (word == null || word.length() <= 1) {
-      return word;
-    }
-    return reverse_simple(word.substring(1)) + word.charAt(0);
+    boolean complete = (word == null) || (word.length() <= 1);
+    return complete ? word : reverse_simple(word.substring(1)) + word.charAt(0);
   }
 
   private static String reverseLowMemory(char[] word) {
