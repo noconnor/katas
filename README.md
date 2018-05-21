@@ -1,3 +1,5 @@
-# katas
+# Katas
 
-Collection of java [kata's](https://en.wikipedia.org/wiki/Kata)
+Collection of code [kata's](https://en.wikipedia.org/wiki/Kata)
+
+* [Reverse string](reverse_string/README.md)
