@@ -1,0 +1,3 @@
+rootProject.name = 'katas'
+
+include ':reverse_string'
