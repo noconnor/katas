@@ -24,8 +24,8 @@ of the image.
 
 ## Algorithms
 
-* Stack-based recursive implementation
-* Queue-based implementation
+* [Stack-based recursive implementation](src/main/java/com/github/noconnor/reference/RecursiveFill.java)
+* [Queue-based implementation](src/main/java/com/github/noconnor/reference/QueueFill.java)
 
 https://en.wikipedia.org/wiki/Flood_fill
 
