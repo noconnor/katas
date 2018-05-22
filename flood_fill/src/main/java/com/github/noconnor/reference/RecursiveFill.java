@@ -35,7 +35,6 @@ public class RecursiveFill {
 
   }
 
-
   private static class Node {
     private int x;
     private int y;
@@ -45,7 +44,6 @@ public class RecursiveFill {
       this.y = y;
     }
   }
-
 
   public static void main(String[] args) {
 
