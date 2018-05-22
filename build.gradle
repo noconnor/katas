@@ -17,7 +17,8 @@ allprojects {
     }
 }
 
-project(':reverse_string') {
+project(':kata_reverse_string') {
+}
 
-
+project(':kata_flood_fill') {
 }

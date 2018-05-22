@@ -1,3 +1,4 @@
 rootProject.name = 'katas'
 
-include ':reverse_string', ':flood_fill'
+include ':kata_reverse_string',
+        ':kata_flood_fill'
