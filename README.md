@@ -2,4 +2,5 @@
 
 Collection of code [kata's](https://en.wikipedia.org/wiki/Kata)
 
-* [Reverse string](reverse_string)
+* [Reverse String](reverse_string)
+* [Flood Fill](flood_fill)
