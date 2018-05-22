@@ -48,6 +48,7 @@ public class RecursiveFill {
 
 
   public static void main(String[] args) {
+
     int[][] canvas = new int[][]{
       new int[]{0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
       new int[]{1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
@@ -56,7 +57,6 @@ public class RecursiveFill {
       new int[]{1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
       new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
-
 
     int[][] expected = new int[][]{
       new int[]{0, 0, 0, 0, 0, 1, 1, 1, 1, 1},
