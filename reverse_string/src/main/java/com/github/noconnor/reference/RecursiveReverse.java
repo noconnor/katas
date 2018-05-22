@@ -56,13 +56,6 @@ public class RecursiveReverse {
     });
     System.out.println();
 
-    TEST.forEach((key, value) -> {
-      String reverse = reverse(key);
-      System.out.println(reverse + " [iterations: " + N + "] [Expected: '" + value + "']");
-      assertThat(reverse, is(value));
-      reset();
-    });
-
     System.out.println();
     TEST.forEach((key, value) -> {
       String reverse = reverseSimple(key);
