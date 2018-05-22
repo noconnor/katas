@@ -6,17 +6,18 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class RecursiveReverse {
-
-  private static final Map<String, String> TEST = new HashMap<>();
-
-  static {
-    TEST.put("Hello World", "dlroW olleH");
-    TEST.put("abcd", "dcba");
-    TEST.put("12345", "54321");
-  }
+public class ReverseString {
 
   private static int N = 0;
+
+  private static String reverseNonRecursive(String word) {
+    StringBuilder builder = new StringBuilder();
+    for (int i = word.length() - 1; i >= 0; i--) {
+      N++;
+      builder.append(word.charAt(i));
+    }
+    return builder.toString();
+  }
 
   private static String reverseSimple(String word) {
     N++;
@@ -41,24 +42,37 @@ public class RecursiveReverse {
     }
   }
 
-
   private static void reset() {
     N = 0;
   }
 
   public static void main(String[] args) {
 
-    TEST.forEach((key, value) -> {
+    Map<String, String> testData = new HashMap<>();
+    testData.put("Hello World", "dlroW olleH");
+    testData.put("abcd", "dcba");
+    testData.put("12345", "54321");
+
+    testData.forEach((key, value) -> {
+      String reverse = reverseSimple(key);
+      System.out.println(reverse + " [iterations: " + N + "] [Expected: '" + value + "']");
+      assertThat(reverse, is(value));
+      reset();
+    });
+
+    System.out.println();
+
+    testData.forEach((key, value) -> {
       String reverse = reverseLowMemory(key.toCharArray());
       System.out.println(reverse + " [iterations: " + N + "] [Expected: '" + value + "']");
       assertThat(reverse, is(value));
       reset();
     });
-    System.out.println();
 
     System.out.println();
-    TEST.forEach((key, value) -> {
-      String reverse = reverseSimple(key);
+
+    testData.forEach((key, value) -> {
+      String reverse = reverseNonRecursive(key);
       System.out.println(reverse + " [iterations: " + N + "] [Expected: '" + value + "']");
       assertThat(reverse, is(value));
       reset();
