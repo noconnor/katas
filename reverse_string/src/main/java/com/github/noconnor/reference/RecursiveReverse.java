@@ -18,13 +18,6 @@ public class RecursiveReverse {
 
   private static int N = 0;
 
-  private static String reverse(String word) {
-    N++;
-    int lastIndex = word.length() - 1;
-    Character lastChar = word.charAt(lastIndex);
-    return lastIndex <= 0 ? lastChar.toString() : lastChar + reverse(word.substring(0, lastIndex));
-  }
-
   private static String reverseSimple(String word) {
     N++;
     boolean complete = (word == null) || (word.length() <= 1);
