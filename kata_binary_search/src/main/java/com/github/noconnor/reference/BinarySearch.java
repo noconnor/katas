@@ -9,16 +9,13 @@ import static org.hamcrest.Matchers.is;
 public class BinarySearch {
 
   private int find(int[] array, int targetValue) {
+
     if (array == null) {
       return -1;
     }
 
     int L = 0;
     int R = array.length - 1;
-
-    if (L > R) {
-      return -1;
-    }
 
     while (L <= R) {
       // greatest integer less than this value (floor midpoint)
@@ -44,13 +41,15 @@ public class BinarySearch {
     test.put(9, 5);
     test.put(11, 6);
     test.put(1, 0);
+    test.put(7, -1);
+    test.put(2, -1);
 
     test.forEach((key, value) -> {
       int index = new BinarySearch().find(array, key);
       System.out.println(key + " is at index: " + index);
       assertThat(index, is(value));
     });
-    
+
   }
 
 }
