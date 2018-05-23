@@ -22,3 +22,6 @@ project(':kata_reverse_string') {
 
 project(':kata_flood_fill') {
 }
+
+project(':kata_binary_search'){
+}

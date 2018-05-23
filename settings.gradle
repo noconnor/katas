@@ -1,4 +1,5 @@
 rootProject.name = 'katas'
 
 include ':kata_reverse_string',
-        ':kata_flood_fill'
+        ':kata_flood_fill',
+        ':kata_binary_search'
