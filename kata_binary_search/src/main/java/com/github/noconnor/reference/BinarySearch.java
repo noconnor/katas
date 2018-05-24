@@ -32,7 +32,6 @@ public class BinarySearch {
     return -1;
   }
 
-
   public static void main(String[] args) {
     int[] array = new int[]{1, 3, 4, 6, 8, 9, 11};
 
@@ -49,7 +48,6 @@ public class BinarySearch {
       System.out.println(key + " is at index: " + index);
       assertThat(index, is(value));
     });
-
   }
 
 }
