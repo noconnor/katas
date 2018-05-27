@@ -119,7 +119,6 @@ public class AdjacencyMatrixGraph {
     assertThat(graph.getDistance2(3), is(emptyList()));
   }
 
-
   private static List<Integer> newList(int... entries) {
     List<Integer> list = new ArrayList();
     for (int i : entries) {

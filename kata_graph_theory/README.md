@@ -1,7 +1,7 @@
 ## Objective 
 
 1. [Implement a Graph using an Adjacency Matrix](src/main/java/com/github/noconnor/reference/AdjacencyMatrixGraph.java)
-2. Implement a Graph using an Adjacency List
+2. [Implement a Graph using an Adjacency List](src/main/java/com/github/noconnor/reference/AdjacencyListGraph.java)
 3. Implement a DFS algorithm
 4. Implement a BFS algorithm
 5. Implement the Dijkstra search algorithm
