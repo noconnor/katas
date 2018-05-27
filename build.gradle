@@ -28,3 +28,6 @@ project(':kata_binary_search'){
 
 project(':kata_hash_table'){
 }
+
+project(':kata_graph_theory'){
+}

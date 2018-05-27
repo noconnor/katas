@@ -3,4 +3,5 @@ rootProject.name = 'katas'
 include ':kata_reverse_string',
         ':kata_flood_fill',
         ':kata_binary_search',
-        ':kata_hash_table'
+        ':kata_hash_table',
+        ':kata_graph_theory'
