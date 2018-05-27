@@ -21,7 +21,7 @@ public class BreadthFirstSearch {
 
     Set<Integer> visited = new HashSet<>();
     Map<Integer, Integer> parentMap = new HashMap<>();
-    Queue<Integer> toExplore = new LinkedBlockingQueue();
+    Queue<Integer> toExplore = new LinkedBlockingQueue<>();
 
     toExplore.offer(start);
     visited.add(start);
