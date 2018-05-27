@@ -9,7 +9,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+import static java.util.Collections.emptyList;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.junit.MatcherAssert.assertThat;
 
 public class DepthFirstSearch {
@@ -79,6 +81,9 @@ public class DepthFirstSearch {
     assertThat(path, containsInAnyOrder(0, 2, 3, 4, 5));
 
     System.out.println("Path from 0 to 5 = " + path);
+
+    path = dfs.findPath(graph, 4, 0);
+    assertThat(path, is(emptyList()));
   }
 
 }
