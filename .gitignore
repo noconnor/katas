@@ -13,5 +13,5 @@
 **/out/
 
 .gradle
-
+.DS_Store
 *.iml
