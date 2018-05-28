@@ -24,19 +24,19 @@ public class AStarSearch {
         // Initialise
         Set<GraphNode> visited = new HashSet<>();
         Map<GraphNode, GraphNode> parentMap = new HashMap<>();
-        Map<GraphNode, Float> weighting = new HashMap<>();
         Map<GraphNode, Float> distanceFromStart = new HashMap<>();
         PriorityQueue<GraphNode> pq = new PriorityQueue<>((o1, o2) -> {
-            return Float.compare(weighting.get(o1), weighting.get(o2));
+            float weightO1 = distanceFromStart.get(o1) + (float)o1.estimateDistance(end);
+            float weightO2 = distanceFromStart.get(o2) + (float)o2.estimateDistance(end);
+            return Float.compare(weightO1,  weightO2);
         });
 
         for (GraphNode node : graph.getVertices()) {
-            weighting.put(node, Float.MAX_VALUE);
+            distanceFromStart.put(node, Float.MAX_VALUE);
         }
 
         pq.offer(start);
         distanceFromStart.put(start, 0F);
-        weighting.put(start, (float)start.estimateDistance(end));
 
         boolean found = false;
 
@@ -54,10 +54,9 @@ public class AStarSearch {
                 for (GraphEdge neighbour : graph.getNeighbours(curr)) {
                     GraphNode next = neighbour.getEnd();
                     float distance = baseDistance + neighbour.getDistance();
-                    float weight = distance + (float) next.estimateDistance(end);
-                    if (weight < weighting.get(next)) {
-                        // Set weighting & distance before updating PQ
-                        weighting.put(next, weight);
+
+                    if (distance < distanceFromStart.get(next)) {
+                        // Set distance before updating PQ
                         distanceFromStart.put(next, distance);
                         pq.offer(next);
                         parentMap.put(next, curr);
@@ -66,7 +65,7 @@ public class AStarSearch {
             }
         }
 
-        System.out.println("Weighting " + weighting);
+        System.out.println("Weighting " + distanceFromStart);
 
         if (!found) {
             System.out.println("No path");
