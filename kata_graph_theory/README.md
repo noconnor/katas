@@ -22,7 +22,8 @@ Coursera:
 | DFS (Depth First Search) | BFS (Breadth First Search) |
 |:----- |:----- |
 |<br>DFS(S, G)<br>&nbsp;&nbsp;&nbsp;&nbsp;initialise **stack**, hashset, map<br>&nbsp;&nbsp;&nbsp;&nbsp;push S to stack<br>&nbsp;&nbsp;&nbsp;&nbsp;add S to visited<br>&nbsp;&nbsp;&nbsp;&nbsp;while stack is not empty<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pop curr from stack<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if curr == G return map<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach of currs unvisited neighbours, n:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add n to visited<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add curr as n's parent in parent map<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push n to top of stack<br>| <br>BFS(S, G)<br>&nbsp;&nbsp;&nbsp;&nbsp;initialise **queue**, hashset, map<br>&nbsp;&nbsp;&nbsp;&nbsp;enqueue S to queue<br>&nbsp;&nbsp;&nbsp;&nbsp;add S to visited<br>&nbsp;&nbsp;&nbsp;&nbsp;while queue is not empty<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dequeue curr from queue<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if curr == G return map<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach of currs unvisited neighbours, n:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add n to visited<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add curr as n's parent in parent map<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enqueue n to top of stack<br>|
-
+| Running time: ```O(E+V)``` | Running time: ```O(E+V)``` |
+ 
 Visualisation of test grid used in DFS and BFS code:
 
 ![Test Grid](src/main/resources/test_graph.png?raw=true)
