@@ -7,11 +7,11 @@ import java.util.Arrays;
 
 public class BubbleSort {
 
-    private int interations;
+    private int iterations;
 
     public void sort(int[] array) {
         int n = array.length;
-        interations = 0;
+        iterations = 0;
         boolean swapped;
         do {
             swapped = false;
@@ -22,21 +22,22 @@ public class BubbleSort {
                     array[i - 1] = buffer;
                     swapped = true;
                 }
-                interations++;
+                iterations++;
             }
 
         } while (!swapped);
     }
 
     public static void main(String[] args) {
+
         int[] array = new int[]{12, 3, 3, 4, 5, 7, 8, 99, 23, 8};
 
         BubbleSort bs = new BubbleSort();
         System.out.println("Before: " + Arrays.toString(array));
         bs.sort(array);
-        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + bs.interations + "]");
+        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + bs.iterations + "][arrayLength: 10]");
 
-        assertThat(bs.interations, is(9));
+        assertThat(bs.iterations, is(9));
         assertThat(array, is(new int[]{3, 3, 4, 5, 7, 8, 12, 23, 8, 99}));
     }
 }
