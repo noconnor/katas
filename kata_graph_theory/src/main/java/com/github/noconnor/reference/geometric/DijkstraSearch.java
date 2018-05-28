@@ -36,7 +36,11 @@ public class DijkstraSearch {
         pq.offer(start);
         distanceFromStartNode.put(start, 0.0F);
         boolean found = false;
+
+        // Running time: O(|E|)
         while (!pq.isEmpty()) {
+
+            // Running time: O(log|E|)
             GraphNode curr = pq.poll();
             if (!visited.contains(curr)) {
                 nodesChecked++;
@@ -57,6 +61,7 @@ public class DijkstraSearch {
 
                         if (distanceToNeighbour < existingMappedDistance) {
                             distanceFromStartNode.put(nextNode, distanceToNeighbour);
+                            // Running time: O(log|E|)
                             pq.offer(nextNode);
                             parentMap.put(nextNode, curr);
                         }

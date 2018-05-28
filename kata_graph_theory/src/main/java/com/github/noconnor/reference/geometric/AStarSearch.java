@@ -31,6 +31,7 @@ public class AStarSearch {
             return Float.compare(weightO1,  weightO2);
         });
 
+        // Running time: O(|V|)
         for (GraphNode node : graph.getVertices()) {
             distanceFromStart.put(node, Float.MAX_VALUE);
         }
@@ -40,7 +41,10 @@ public class AStarSearch {
 
         boolean found = false;
 
+        // Running time: O(|E|)
         while (!pq.isEmpty()) {
+
+            // Running time: O(log|E|)
             GraphNode curr = pq.poll();
             if (!visited.contains(curr)) {
                 nodesChecked++;
@@ -58,6 +62,7 @@ public class AStarSearch {
                     if (distance < distanceFromStart.get(next)) {
                         // Set distance before updating PQ
                         distanceFromStart.put(next, distance);
+                        // Running time: O(log|E|)
                         pq.offer(next);
                         parentMap.put(next, curr);
                     }
