@@ -31,3 +31,6 @@ project(':kata_hash_table'){
 
 project(':kata_graph_theory'){
 }
+
+project(':kata_sort'){
+}
