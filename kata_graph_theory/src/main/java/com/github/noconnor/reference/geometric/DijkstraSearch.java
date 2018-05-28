@@ -15,8 +15,10 @@ import java.util.Set;
 
 public class DijkstraSearch {
 
-    public List<GraphNode> findPath(Graph graph, GraphNode start, GraphNode end) {
+    private int nodesChecked;
 
+    public List<GraphNode> findPath(Graph graph, GraphNode start, GraphNode end) {
+        nodesChecked = 0;
         // Initialise
         Map<GraphNode, GraphNode> parentMap = new HashMap<>();
         Map<GraphNode, Float> distanceFromStartNode = new HashMap<>();
@@ -37,17 +39,18 @@ public class DijkstraSearch {
         while (!pq.isEmpty()) {
             GraphNode curr = pq.poll();
             if (!visited.contains(curr)) {
+                nodesChecked++;
                 visited.add(curr);
                 if (curr.equals(end)) {
                     found = true;
                     break;
                 }
+                System.out.println("Testing route via: " + curr);
 
                 float distance = distanceFromStartNode.get(curr);
                 for (GraphEdge neighbour : graph.getNeighbours(curr)) {
                     GraphNode nextNode = neighbour.getEnd();
                     if (!visited.contains(neighbour.getEnd())) {
-                        System.out.println("Testing route via: " + nextNode);
                         // find next shortest hop
                         float distanceToNeighbour = distance + neighbour.getDistance();
                         float existingMappedDistance = distanceFromStartNode.get(nextNode);
@@ -61,6 +64,7 @@ public class DijkstraSearch {
                 }
             }
         }
+        System.out.println("Weighting " + distanceFromStartNode);
 
         if (!found) {
             System.out.println("no path found");
@@ -69,7 +73,7 @@ public class DijkstraSearch {
 
         LinkedList<GraphNode> path = new LinkedList<>();
         GraphNode curr = end;
-        while (curr != start) {
+        while (!curr.equals(start)) {
             path.addFirst(curr);
             curr = parentMap.get(curr);
         }
@@ -86,7 +90,7 @@ public class DijkstraSearch {
         GraphNode seattle = new GraphNode("Seattle", 47.6062f, -122.3321f);
         GraphNode sacramento = new GraphNode("Sacramento", 38.5816f, -121.4944f);
         GraphNode sanJose = new GraphNode("San Jose", 37.3382f, -121.8863f);
-        GraphNode tuscon = new GraphNode("Tuscon", 32.7157f, -117.1611f);
+        GraphNode tuscon = new GraphNode("Tuscon", 32.2226f, -110.9747f);
         GraphNode denver = new GraphNode("Denver", 39.7392f, -104.9903f);
         GraphNode dublin = new GraphNode("Dublin", 53.3498f, -6.2603f);
 
@@ -109,10 +113,12 @@ public class DijkstraSearch {
         System.out.println(path);
 
         assertThat(path, containsInAnyOrder(sanDiego, sanJose, sacramento, seattle));
+        assertThat(ds.nodesChecked, is(6));
 
         List<GraphNode> noPath = ds.findPath(graph, sanDiego, dublin);
         System.out.println(noPath);
         assertThat(noPath, is(emptyList()));
+        assertThat(ds.nodesChecked, is(6));
     }
 
 }
