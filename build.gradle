@@ -23,7 +23,7 @@ project(':kata_reverse_string') {
 project(':kata_flood_fill') {
 }
 
-project(':kata_binary_search'){
+project(':kata_search'){
 }
 
 project(':kata_hash_table'){
