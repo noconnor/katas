@@ -35,7 +35,7 @@ public class BubbleSort {
         BubbleSort bs = new BubbleSort();
         System.out.println("Before: " + Arrays.toString(array));
         bs.sort(array);
-        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + bs.iterations + "][arrayLength: 10]");
+        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + bs.iterations + "][arrayLength: " + array.length + "]");
 
         assertThat(bs.iterations, is(36));
         assertThat(array, is(new int[]{3, 3, 4, 5, 7, 8, 8, 12, 23, 99}));

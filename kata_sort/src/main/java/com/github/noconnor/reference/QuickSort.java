@@ -18,7 +18,7 @@ public class QuickSort {
         QuickSort qs = new QuickSort();
         System.out.println("Before: " + Arrays.toString(array));
         qs.sort(array);
-        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + qs.iterations + "][arrayLength: 10]");
+        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + qs.iterations + "][arrayLength: " + array.length + "]");
 
         assertThat(qs.iterations, is(36));
         assertThat(array, is(new int[]{3, 3, 4, 5, 7, 8, 8, 12, 23, 99}));
