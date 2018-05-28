@@ -1,7 +1,9 @@
 package com.github.noconnor.reference.geometric;
 
+import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.is;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -86,6 +88,7 @@ public class DijkstraSearch {
         GraphNode sanJose = new GraphNode("San Jose", 37.3382f, -121.8863f);
         GraphNode tuscon = new GraphNode("Tuscon", 32.7157f, -117.1611f);
         GraphNode denver = new GraphNode("Denver", 39.7392f, -104.9903f);
+        GraphNode dublin = new GraphNode("Dublin", 53.3498f, -6.2603f);
 
         graph.addVertex(sanDiego);
         graph.addVertex(seattle);
@@ -107,6 +110,9 @@ public class DijkstraSearch {
 
         assertThat(path, containsInAnyOrder(sanDiego, sanJose, sacramento, seattle));
 
+        List<GraphNode> noPath = ds.findPath(graph, sanDiego, dublin);
+        System.out.println(noPath);
+        assertThat(noPath, is(emptyList()));
     }
 
 }
