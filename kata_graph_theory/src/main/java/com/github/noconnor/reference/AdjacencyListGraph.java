@@ -64,6 +64,7 @@ public class AdjacencyListGraph implements Graph {
   }
 
   public static void main(String[] args) {
+    // See src/main/resources/test_graph.png
     AdjacencyListGraph graph = new AdjacencyListGraph();
     for (int i = 0; i < 6; i++) {
       graph.addVertex();

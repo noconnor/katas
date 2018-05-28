@@ -60,7 +60,7 @@ public class DepthFirstSearch {
   }
 
   public static void main(String[] args) {
-    // See src/main/resources/TestGraph.png
+    // See src/main/resources/test_graph.png
     Graph graph = new AdjacencyMatrixGraph();
     for (int i = 0; i < 6; i++) {
       graph.addVertex();

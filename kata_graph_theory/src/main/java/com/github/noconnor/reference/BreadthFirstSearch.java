@@ -62,6 +62,7 @@ public class BreadthFirstSearch {
   }
 
   public static void main(String[] args) {
+    // See src/main/resources/test_graph.png
     Graph graph = new AdjacencyListGraph();
     for (int i = 0; i < 6; i++) {
       graph.addVertex();
