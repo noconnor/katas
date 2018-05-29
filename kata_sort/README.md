@@ -2,7 +2,7 @@
 
 1. [Implement bubble sort algorithm](src/main/java/com/github/noconnor/reference/BubbleSort.java)
 2. [Implement quick sort algorithm](src/main/java/com/github/noconnor/reference/QuickSort.java)
-3. Implement merge sort algorithm
+3. [Implement merge sort algorithm](src/main/java/com/github/noconnor/reference/MergeSort.java)
 
 ## Complexity
 
