@@ -51,5 +51,4 @@ public class QuickSort {
         assertThat(array, is(new int[]{3, 3, 4, 5, 7, 8, 8, 12, 23, 99}));
     }
 
-
 }

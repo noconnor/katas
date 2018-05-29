@@ -20,7 +20,7 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 * [Bubble Sort](https://en.wikipedia.org/wiki/Sorting_algorithm#Bubble_sort)
   * [Bubble sort java reference](https://www.mkyong.com/java/java-bubble-sort-example/)
 * [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
-  * [Quick sort java reference]() 
+  * [Quick sort java reference](https://www.geeksforgeeks.org/quick-sort/) 
 * [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
   * [Merge sort java reference](https://www.geeksforgeeks.org/merge-sort/)
 
