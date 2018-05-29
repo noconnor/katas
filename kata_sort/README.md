@@ -34,7 +34,7 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 
 |Algorithm| Pros | Cons|
 |:--------|:-----|:----|
-|Bubble Sort|||
+|Bubble Sort|* Good on extremely small datasets|* O(n^2) time complexity|
 |Merge Sort|* Better than quick sort when sorting linked lists<br> * Uses less comparisons than Quick sort|* Worst case memory is O(n)|
 |Quick Sort|* Worst case memory complexity is O(log n)|* Not good if dataset doesn't fit into memory|
 
