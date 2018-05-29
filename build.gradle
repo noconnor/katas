@@ -29,8 +29,11 @@ project(':kata_search'){
 project(':kata_hash_table'){
 }
 
-project(':kata_graph_theory'){
+project(':kata_graphs'){
 }
 
 project(':kata_sort'){
+}
+
+project(':kata_trees'){
 }

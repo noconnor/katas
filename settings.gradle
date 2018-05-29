@@ -5,4 +5,5 @@ include ':kata_reverse_string',
         ':kata_search',
         ':kata_sort',
         ':kata_hash_table',
-        ':kata_graph_theory'
+        ':kata_graphs',
+        ':kata_trees'
