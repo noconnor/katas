@@ -1,6 +1,7 @@
 ## Objective
 
 * [Implement a binary tree](src/main/java/com/github/noconnor/reference/BinaryTree.java)
+* Implement a binary search tree
 * Implement an n-ary tree
 * Implement a tries tree
 * Implement a balanced binary tree (red/black)
@@ -13,7 +14,7 @@
 
 ## Notes
 
-**Tree Definitions:**
+**General Tree Definitions:**
 
 * Root has no parents
 * Leaf has no children
@@ -28,4 +29,13 @@
 * Post-order: visit all left subtree, visit all right subtree, visit root
 * In-order: visit all left subtree, visit root, visit all right subtree
 * Level-order: Breadth First Search (BFS)
+
+
+**Binary Search tree Definition:**
+
+Insertion/Removal comparable to a linked list with the search capabilities associated with binary search on an ordered array 
+
+* Must be a Binary Tree
+* Left subtree needs to be "less than" parent
+* Right subtree needs to be "greater than" parent
 

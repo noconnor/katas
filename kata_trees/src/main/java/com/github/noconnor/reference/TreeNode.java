@@ -32,6 +32,10 @@ public class TreeNode<E> {
         return this.right;
     }
 
+    public E getData(){
+        return data;
+    }
+
     public void visit() {
         // do nothing
     }
