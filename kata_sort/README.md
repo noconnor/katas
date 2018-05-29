@@ -4,6 +4,8 @@
 2. [Implement quick sort algorithm](src/main/java/com/github/noconnor/reference/QuickSort.java)
 3. [Implement merge sort algorithm](src/main/java/com/github/noconnor/reference/MergeSort.java)
 
+<br>
+
 ## Complexity
 
 https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
@@ -12,8 +14,10 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 |Algorithm| Time - Worst case| Time - Best case | Time - Average | Space - Worst case|
 |:---|:---|:---|:---|:---|
 |Bubble Sort|O(n^2)     |O(n)       |O(n^2)     |O(1)| 
-|Quick Sort |O(n^2)     |O(n*log(n))|O(n*log(n))|O(n)|
+|Quick Sort |O(n^2)     |O(n*log(n))|O(n*log(n))|O(log n)|
 |Merge Sort |O(n*log(n))|O(n*log(n))|O(n*log(n))|O(n)|
+
+<br>
 
 ## Reference
 
@@ -24,6 +28,17 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 * [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
   * [Merge sort java reference](https://www.geeksforgeeks.org/merge-sort/)
 
+<br>
+
+## Pros & cons
+
+|Algorithm| Pros | Cons|
+|:--------|:-----|:----|
+|Bubble Sort|||
+|Merge Sort|* Better than quick sort when sorting linked lists<br> * Uses less comparisons than Quick sort|* Worst case memory is O(n)|
+|Quick Sort|* Worst case memory complexity is O(log n)|* Not good if dataset doesn't fit into memory|
+
+<br>
 
 ## Example
 
