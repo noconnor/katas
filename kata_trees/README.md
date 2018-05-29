@@ -1,7 +1,7 @@
 ## Objective
 
 * [Implement a binary tree](src/main/java/com/github/noconnor/reference/BinaryTree.java)
-* Implement a binary search tree
+* [Implement a binary search tree](src/main/java/com/github/noconnor/reference/BinarySearchTree.java)
 * Implement an n-ary tree
 * Implement a tries tree
 * Implement a balanced binary tree (red/black)
