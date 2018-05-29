@@ -82,8 +82,7 @@ public class MergeSort {
         MergeSort ms = new MergeSort();
         System.out.println("Before: " + Arrays.toString(array));
         ms.sort(array);
-        System.out
-            .println(format("After: %s [iterations %d] [len %d]", Arrays.toString(array), ms.iterations, array.length));
+        System.out.println(format("After: %s [iterations %d] [len %d]", Arrays.toString(array), ms.iterations, array.length));
 
         assertThat(ms.iterations, is(68));
         assertThat(array, is(new int[]{3, 3, 4, 5, 7, 8, 8, 12, 23, 99}));
