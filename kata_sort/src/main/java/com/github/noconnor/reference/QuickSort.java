@@ -10,7 +10,34 @@ public class QuickSort {
     private int iterations;
 
     public void sort(int[] array) {
+        sort(array, 0, array.length - 1);
+    }
 
+    private void sort(int[] array, int low, int high) {
+        if (low < high) {
+            int pi = partition(array, low, high);
+            sort(array, low, pi - 1);
+            sort(array, pi + 1, high);
+        }
+    }
+
+    private int partition(int[] array, int low, int high) {
+        int pivot = array[high];
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (array[j] <= pivot) {
+                i++;
+                int buffer = array[i];
+                array[i] = array[j];
+                array[j] = buffer;
+            }
+            iterations++;
+        }
+        int buffer = array[i + 1];
+        array[i + 1] = array[high];
+        array[high] = buffer;
+
+        return i + 1;
     }
 
     public static void main(String[] args) {
@@ -18,9 +45,9 @@ public class QuickSort {
         QuickSort qs = new QuickSort();
         System.out.println("Before: " + Arrays.toString(array));
         qs.sort(array);
-        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + qs.iterations + "][arrayLength: " + array.length + "]");
+        System.out.println("After: " + Arrays.toString(array) + "[iterations:" + qs.iterations + "][arrayLength: " + array.length+ "]");
 
-        assertThat(qs.iterations, is(36));
+        assertThat(qs.iterations, is(27));
         assertThat(array, is(new int[]{3, 3, 4, 5, 7, 8, 8, 12, 23, 99}));
     }
 
