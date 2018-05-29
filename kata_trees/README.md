@@ -2,11 +2,13 @@
 
 * [Implement a binary tree](src/main/java/com/github/noconnor/reference/BinaryTree.java)
 * [Implement a binary search tree](src/main/java/com/github/noconnor/reference/BinarySearchTree.java)
-* Implement an n-ary tree
-* Implement a tries tree
-* Implement a balanced binary tree (red/black)
-* Implement a balanced binary tree (splay)
-* Implement a balanced binary tree (AVL)
+* Implement a tries
+
+*Review:*
+* n-ary tree implementation
+* red/black tree implementation
+* splay tree implementation
+* AVL tree implementation
 
 ## Resources
 
