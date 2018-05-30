@@ -113,29 +113,32 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
         return false;
     }
 
-    public void print() {
-        System.out.println();
-        print(root, 0, "");
-        System.out.println();
+    public String toString() {
+        StringBuilder builder = new StringBuilder("\n");
+        print(root, 0, "", builder);
+        builder.append("\n");
+        return builder.toString();
     }
 
-    public void print(TreeNode<E> node, int level, String separator) {
+    private void print(TreeNode<E> node, int level, String separator, StringBuilder builder) {
         if (node != null) {
             // reverse in order traversal
-            print(node.getRight(), level + 1, "/");
-
+            print(node.getRight(), level + 1, "/", builder);
             if (level == 0) {
-                System.out.println("  (" + node.getData() + ")");
+                builder.append("  (");
+                builder.append(node.getData());
+                builder.append(")\n");
             } else {
                 for (int i = 0; i < level; i++) {
-                    System.out.print("    ");
+                    builder.append("    ");
                 }
-                System.out.println(separator + "-(" + node.getData() + ")");
+                builder.append(separator);
+                builder.append("-(");
+                builder.append(node.getData());
+                builder.append(")\n");
             }
-
-            print(node.getLeft(), level + 1, "\\");
+            print(node.getLeft(), level + 1, "\\", builder);
         }
-
     }
 
     public static void main(String[] args) {
@@ -159,20 +162,16 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
         tree.insert(45);
         tree.insert(22);
 
-        System.out.println("\nFull tree");
-        tree.print();
+        System.out.println("\nFull tree\n" + tree);
 
-        System.out.println("\nDeleting [20]");
         tree.delete(20);
-        tree.print();
+        System.out.println("\nDeleting [20]..\n" + tree);
 
-        System.out.println("\nDeleting [70]");
         tree.delete(70);
-        tree.print();
+        System.out.println("\nDeleting [70]..\n" + tree);
 
-        System.out.println("\nDeleting [50]");
         tree.delete(50);
-        tree.print();
+        System.out.println("\nDeleting [50]..\n" + tree);
     }
 
 }
