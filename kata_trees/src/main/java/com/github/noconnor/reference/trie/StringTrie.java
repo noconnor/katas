@@ -35,7 +35,6 @@ public class StringTrie {
     return curr.isWord();
   }
 
-
   public String toString() {
     StringBuilder builder = new StringBuilder("\n");
     preOrder(root, builder, 0);
@@ -62,9 +61,7 @@ public class StringTrie {
         preOrder(child, builder, nextLevel);
       }
     }
-
   }
-
 
   public static void main(String[] args) {
     StringTrie trie = new StringTrie();

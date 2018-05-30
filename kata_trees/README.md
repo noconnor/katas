@@ -2,7 +2,7 @@
 
 * [Implement a binary tree](src/main/java/com/github/noconnor/reference/BinaryTree.java)
 * [Implement a binary search tree](src/main/java/com/github/noconnor/reference/BinarySearchTree.java)
-* Implement a tries
+* [Implement a trie tree](src/main/java/com/github/noconnor/reference/trie/StringTrie.java)
 
 *Review:*
 * n-ary tree implementation
