@@ -1,12 +1,15 @@
 package com.github.noconnor.reference;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 public class BinarySearchTree<E extends Comparable<? super E>> {
 
     TreeNode<E> root;
-
 
     public void delete(E value) {
         delete(value, root);
@@ -48,6 +51,11 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
 
 
     public boolean insert(E value) {
+
+        if (root == null) {
+            root = new TreeNode<>(value, null);
+            return true;
+        }
         TreeNode<E> curr = root;
         int comp = value.compareTo(curr.getData());
 
@@ -107,6 +115,72 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
             }
         }
         return false;
+    }
+
+    public String toString() {
+
+        Map<TreeNode<E>, Integer> levels = new HashMap<>();
+        Map<Integer, List<TreeNode<E>>> levelMapping = new HashMap<>();
+
+        levels.put(root, 0);
+
+        Queue<TreeNode<E>> queue = new LinkedList<>();
+        queue.add(root.getLeft());
+        queue.add(root.getRight());
+
+        while(!queue.isEmpty()){
+            TreeNode<E> curr = queue.remove();
+            if(curr != null){
+                int level = levels.get(curr.getParent()) + 1;
+                levels.put(curr, level);
+
+                List<TreeNode<E>> nodesAtLevel = levelMapping.getOrDefault(level, new ArrayList<>());
+                nodesAtLevel.add(curr);
+                levelMapping.put(level, nodesAtLevel);
+
+                queue.add(curr.getLeft());
+                queue.add(curr.getRight());
+            }
+        }
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(root);
+        builder.append("\n");
+        levelMapping.forEach((level, nodes) -> {
+            builder.append(nodes);
+            builder.append("\n");
+        });
+
+        return builder.toString();
+    }
+
+    public static void main(String[] args) {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        /*
+               50
+           /      \
+          30      70
+         /  \    /   \
+        20  40  60   80
+        */
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+
+        System.out.println(tree);
+
+        tree.delete(20);
+        System.out.println(tree);
+
+        tree.delete(70);
+        System.out.println(tree);
+
+        tree.delete(50);
+        System.out.println(tree);
     }
 
 }

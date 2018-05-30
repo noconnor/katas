@@ -24,6 +24,10 @@ public class TreeNode<E> {
         return this.right;
     }
 
+    public TreeNode<E> getParent() {
+        return parent;
+    }
+
     public TreeNode<E> getLeft() {
         return this.left;
     }
@@ -52,4 +56,8 @@ public class TreeNode<E> {
         // do nothing
     }
 
+    @Override
+    public String toString() {
+        return data.toString();
+    }
 }
