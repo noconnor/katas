@@ -8,6 +8,45 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
     TreeNode<E> root;
 
 
+    public void delete(E value) {
+        delete(value, root);
+    }
+
+    private TreeNode<E> delete(E value, TreeNode<E> node) {
+        if (node == null) {
+            return null;
+        }
+
+        if (value.compareTo(node.getData()) < 0) {
+            node.setLeft(delete(value, node.getLeft()));
+        } else if (value.compareTo(node.getData()) > 0) {
+            node.setRight(delete(value, node.getRight()));
+        } else {
+
+            if (node.getRight() == null) {
+                return node.getLeft();
+            } else if (node.getLeft() == null) {
+                return node.getRight();
+            }
+
+            E minNodeValue = minValue(node.getRight());
+            node.setData(minNodeValue);
+            node.setRight(delete(minNodeValue, node.getRight()));
+        }
+
+        return node;
+    }
+
+    private E minValue(TreeNode<E> node) {
+        E value = node.getData();
+        while (node.getLeft() != null) {
+            value = node.getLeft().getData();
+            node = node.getLeft();
+        }
+        return value;
+    }
+
+
     public boolean insert(E value) {
         TreeNode<E> curr = root;
         int comp = value.compareTo(curr.getData());

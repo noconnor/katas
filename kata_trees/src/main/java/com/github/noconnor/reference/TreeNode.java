@@ -28,12 +28,24 @@ public class TreeNode<E> {
         return this.left;
     }
 
+    public void setLeft(TreeNode<E> left) {
+        this.left = left;
+    }
+
     public TreeNode<E> getRight() {
         return this.right;
     }
 
-    public E getData(){
+    public void setRight(TreeNode<E> right) {
+        this.right = right;
+    }
+
+    public E getData() {
         return data;
+    }
+
+    public void setData(E data) {
+        this.data = data;
     }
 
     public void visit() {
