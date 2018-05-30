@@ -1,10 +1,6 @@
 package com.github.noconnor.reference;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 
 public class BinarySearchTree<E extends Comparable<? super E>> {
@@ -117,41 +113,29 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
         return false;
     }
 
-    public String toString() {
+    public void print() {
+        System.out.println();
+        print(root, 0, "");
+        System.out.println();
+    }
 
-        Map<TreeNode<E>, Integer> levels = new HashMap<>();
-        Map<Integer, List<TreeNode<E>>> levelMapping = new HashMap<>();
+    public void print(TreeNode<E> node, int level, String separator) {
+        if (node != null) {
+            // reverse in order traversal
+            print(node.getRight(), level + 1, "/");
 
-        levels.put(root, 0);
-
-        Queue<TreeNode<E>> queue = new LinkedList<>();
-        queue.add(root.getLeft());
-        queue.add(root.getRight());
-
-        while (!queue.isEmpty()) {
-            TreeNode<E> curr = queue.remove();
-            if (curr != null) {
-                int level = levels.get(curr.getParent()) + 1;
-                levels.put(curr, level);
-
-                List<TreeNode<E>> nodesAtLevel = levelMapping.getOrDefault(level, new ArrayList<>());
-                nodesAtLevel.add(curr);
-                levelMapping.put(level, nodesAtLevel);
-
-                queue.add(curr.getLeft());
-                queue.add(curr.getRight());
+            if (level == 0) {
+                System.out.println("  (" + node.getData() + ")");
+            } else {
+                for (int i = 0; i < level; i++) {
+                    System.out.print("    ");
+                }
+                System.out.println(separator + "-(" + node.getData() + ")");
             }
+
+            print(node.getLeft(), level + 1, "\\");
         }
 
-        StringBuilder builder = new StringBuilder();
-        builder.append(root);
-        builder.append("\n");
-        levelMapping.forEach((level, nodes) -> {
-            builder.append(nodes);
-            builder.append("\n");
-        });
-
-        return builder.toString();
     }
 
     public static void main(String[] args) {
@@ -166,21 +150,29 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
         tree.insert(50);
         tree.insert(30);
         tree.insert(20);
+        tree.insert(21);
         tree.insert(40);
         tree.insert(70);
         tree.insert(60);
         tree.insert(80);
+        tree.insert(79);
+        tree.insert(45);
+        tree.insert(22);
 
-        System.out.println(tree);
+        System.out.println("\nFull tree");
+        tree.print();
 
+        System.out.println("\nDeleting [20]");
         tree.delete(20);
-        System.out.println(tree);
+        tree.print();
 
+        System.out.println("\nDeleting [70]");
         tree.delete(70);
-        System.out.println(tree);
+        tree.print();
 
+        System.out.println("\nDeleting [50]");
         tree.delete(50);
-        System.out.println(tree);
+        tree.print();
     }
 
 }
