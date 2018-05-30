@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public class BinarySearchTree<E extends Comparable<? super E>> {
 
-    TreeNode<E> root;
+    private TreeNode<E> root;
 
     public void delete(E value) {
         delete(value, root);
@@ -128,9 +128,9 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
         queue.add(root.getLeft());
         queue.add(root.getRight());
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode<E> curr = queue.remove();
-            if(curr != null){
+            if (curr != null) {
                 int level = levels.get(curr.getParent()) + 1;
                 levels.put(curr, level);
 
