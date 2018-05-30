@@ -24,35 +24,33 @@ public class TrieNode {
         return text;
     }
 
-    public TrieNode getParent(){
+    public TrieNode getParent() {
         return parent;
     }
 
     public void addWord(String word) {
-        addWord(word, 0);
+        addWord(word, word);
     }
 
-    private void addWord(String word, int index) {
+    private void addWord(String stem, String word) {
 
-        String substring = word.substring(index);
-
-        if(substring.length() > 1) {
-            char firstCharacter = word.charAt(index);
+        if (stem.length() > 1) {
+            char firstCharacter = stem.charAt(0);
             TrieNode node = children.get(firstCharacter);
             if (node == null) {
                 node = new TrieNode(this);
+                node.text = stem;
             }
-            text = substring;
+            node.addWord(stem.substring(1), word);
             children.put(firstCharacter, node);
-            node.addWord(word, ++index);
         } else {
             text = word;
             isWord = true;
         }
     }
 
-    public String toString(){
-        return "[isWord:" + isWord +"][text:" + text + "]" + children;
+    public String toString() {
+        return "[isWord:" + isWord + "][text:" + text + "]";
     }
 
 }
