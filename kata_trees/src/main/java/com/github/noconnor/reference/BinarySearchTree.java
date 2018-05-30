@@ -115,29 +115,28 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
 
     public String toString() {
         StringBuilder builder = new StringBuilder("\n");
-        print(root, 0, "", builder);
+        print(root, 0, builder);
         builder.append("\n");
         return builder.toString();
     }
 
-    private void print(TreeNode<E> node, int level, String separator, StringBuilder builder) {
+    private void print(TreeNode<E> node, int level, StringBuilder builder) {
         if (node != null) {
             // reverse in order traversal
-            print(node.getRight(), level + 1, "/", builder);
+            print(node.getRight(), level + 1, builder);
             if (level == 0) {
-                builder.append("  (");
+                builder.append("(");
                 builder.append(node.getData());
                 builder.append(")\n");
             } else {
                 for (int i = 0; i < level; i++) {
-                    builder.append("    ");
+                    builder.append("|\t");
                 }
-                builder.append(separator);
-                builder.append("-(");
+                builder.append("|-(");
                 builder.append(node.getData());
                 builder.append(")\n");
             }
-            print(node.getLeft(), level + 1, "\\", builder);
+            print(node.getLeft(), level + 1, builder);
         }
     }
 
