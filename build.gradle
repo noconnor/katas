@@ -17,7 +17,7 @@ allprojects {
     }
 }
 
-project(':kata_reverse_string') {
+project(':kata_strings') {
 }
 
 project(':kata_flood_fill') {
@@ -26,7 +26,7 @@ project(':kata_flood_fill') {
 project(':kata_search'){
 }
 
-project(':kata_hash_table'){
+project(':kata_data_structures'){
 }
 
 project(':kata_graphs'){
