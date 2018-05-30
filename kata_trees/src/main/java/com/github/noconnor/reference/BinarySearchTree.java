@@ -171,6 +171,7 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
 
         tree.delete(50);
         System.out.println("\nDeleting [50]..\n" + tree);
+
     }
 
 }

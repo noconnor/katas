@@ -10,9 +10,25 @@
 * splay tree implementation
 * AVL tree implementation
 
+<br> 
 ## Resources
 
 * [Coursera trees](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/ovovP/core-trees)
+
+<br> 
+
+## Complexity
+
+| Tree | Best case | Average case | Worst case |
+|:-----|:----------|:-------------|:-----------|
+| BST           | O(1)      | O(log n) | O(n)       |
+| Balanced BST  | O(1)      | O(log n) | O(log n)   |
+| Linkedlist    | O(1)      | O(n)     | O(n)       |
+
+
+***_TreeSet is an example of a balanced binary search tree_
+
+<br> 
 
 ## Notes
 
@@ -23,7 +39,9 @@
 * Each node has only one parent, no cycles
 * Binary tree: Each node has at most 2 children
 * Generic tree: Each node can have multiple children
+* Max distance to leaves = height of tree
 
+<br> 
 
 **Traversals:**
 
@@ -32,6 +50,7 @@
 * In-order: visit all left subtree, visit root, visit all right subtree
 * Level-order: Breadth First Search (BFS)
 
+<br> 
 
 **Binary Search tree Definition:**
 
@@ -41,3 +60,17 @@ Insertion/Removal comparable to a linked list with the search capabilities assoc
 * Left subtree needs to be "less than" parent
 * Right subtree needs to be "greater than" parent
 
+<br> 
+
+**Balanced BST:**
+
+* |LeftHeight - RightHeight| <= 1
+* Heights ~= `log(n)` 
+
+<br> 
+
+**Tries:**
+
+* Comes from reTRIEval
+* Structure of the key helps identify where the value is
+* Not a BST (can have more than two child nodes)
