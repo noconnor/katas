@@ -2,7 +2,7 @@
 
 1. [Implement a hashtable (use chaining)](src/main/java/com/github/noconnor/reference/ChainedHashTable.java)
 2. [Implement a min-heap](src/main/java/com/github/noconnor/reference/MinHeap.java)
-3. Implement a min-heap
+3. Implement a max-heap
 4. Implement a stack
 
 <br>
@@ -38,9 +38,11 @@ The root is the second item in the array.
 We skip the index zero cell of the array for the convenience of implementation. 
 Consider k-th element of the array:
 
-* its left child is located at 2*k index 
-* its right child is located at 2*k+1. index 
-* its parent is located at k/2 index
+* its left child is located at **2\*k** index 
+* its right child is located at **2\*k+1** index 
+* its parent is located at **k/2** index
+
+<br>
 
 *min-heap*
 
@@ -49,5 +51,17 @@ Consider k-th element of the array:
   * Compare new element with parent, if less than, swap with parent
   * repeat comparison step until at root
   * Worst case running time = `O(log n)`
-* Delete
-  *  
+
+* DeleteMin
+  * Replace root node with last node in heap
+  * decrement heap size
+  * bubble down root value to find correct position in tree (i.e. bubble down until child is less than replaced value)
+
+<br>
+
+**Heap sort Complexity**
+
+| Best| Worst | Average |
+|:----|:------|:--------|
+|O(n*log n)|O(n*log n)|O(n*log n)|
+
