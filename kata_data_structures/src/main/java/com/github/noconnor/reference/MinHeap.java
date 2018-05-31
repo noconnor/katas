@@ -5,6 +5,7 @@ import static org.hamcrest.junit.MatcherAssert.assertThat;
 
 import java.util.Arrays;
 
+@SuppressWarnings("Duplicates")
 public class MinHeap<E extends Comparable<? super E>> {
 
     private E[] heap;
@@ -62,6 +63,7 @@ public class MinHeap<E extends Comparable<? super E>> {
             percolateDown(1);
         }
 
+        // heap.length - 1 because heap is 1 bigger than the array
         for (int k = 0; k < heap.length - 1; k++) {
             array[k] = heap[heap.length - 1 - k];
         }
@@ -106,27 +108,26 @@ public class MinHeap<E extends Comparable<? super E>> {
         return builder.toString();
     }
 
-    private void inOrder(int nodeIndex, StringBuilder builder, int index) {
+    private void inOrder(int nodeIndex, StringBuilder builder, int level) {
         if (nodeIndex < heap.length && heap[nodeIndex] != null) {
 
-            int nextLevel = index + 1;
+            int nextLevel = level + 1;
 
-            inOrder(2 * nodeIndex, builder, nextLevel);
-
-            if (index == 0) {
+            inOrder(2 * nodeIndex + 1, builder, nextLevel);
+            if (level == 0) {
                 builder.append("(");
                 builder.append(heap[nodeIndex]);
                 builder.append(")\n");
             } else {
-                for (int i = 0; i < index; i++) {
-                    builder.append("|\t");
+                for (int i = 0; i < level - 1; i++) {
+                    builder.append(" |\t");
                 }
-                builder.append("|-(");
+                builder.append(" |-(");
                 builder.append(heap[nodeIndex]);
                 builder.append(")\n");
             }
+            inOrder(2 * nodeIndex, builder, nextLevel);
 
-            inOrder(2 * nodeIndex + 1, builder, nextLevel);
         }
     }
 

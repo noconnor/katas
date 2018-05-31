@@ -2,7 +2,7 @@
 
 1. [Implement a hashtable (use chaining)](src/main/java/com/github/noconnor/reference/ChainedHashTable.java)
 2. [Implement a min-heap](src/main/java/com/github/noconnor/reference/MinHeap.java)
-3. Implement a max-heap
+3. [Implement a max-heap](src/main/java/com/github/noconnor/reference/MaxHeap.java)
 4. Implement a stack
 
 <br>
