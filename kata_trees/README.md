@@ -66,7 +66,7 @@ Insertion/Removal comparable to a linked list with the search capabilities assoc
 #### Balanced BST:
 
 * |LeftHeight - RightHeight| <= 1
-* Heights ~= `log(n)` 
+* Height ~= `log(n)` 
 
 <br> 
 
@@ -83,13 +83,19 @@ Insertion/Removal comparable to a linked list with the search capabilities assoc
 https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/
  
 * Self balancing **binary search tree**
-* Each node has an extra bit interpreted as the colour
-* Colour bit is used to ensure the tree remains approximately balanced during insertion/deletion
-* Guaranteed searching in O(log n)
-* Insertion + deletion + rearrage also = O(log n)
-* The root is black
-* Every leaf is black
-* If a node is red, both children are black
+* Every node has a color either red or black.
+* Root of tree is always black.
+* There are no two adjacent red nodes (A red node cannot have a red parent or red child).
+* Every path from root to a NULL node has same number of black nodes.
+* height always `log(n)`
 
 Insert: https://en.wikipedia.org/wiki/Red%E2%80%93black_tree#Insertion
+
 Removal: https://en.wikipedia.org/wiki/Red%E2%80%93black_tree#Removal
+
+
+*Comparison with AVL Tree*
+
+The AVL trees are more balanced compared to Red-Black Trees, but they may cause more rotations during insertion and deletion. 
+So if your application involves many frequent insertions and deletions, then Red Black trees should be preferred. 
+And if the insertions and deletions are less frequent and search is a more frequent operation, then AVL tree should be preferred over Red-Black Tree.
