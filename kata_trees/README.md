@@ -10,7 +10,8 @@
 * splay tree implementation
 * AVL tree implementation
 
-<br> 
+<br>
+ 
 ## Resources
 
 * [Coursera trees](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/ovovP/core-trees)
@@ -32,7 +33,7 @@
 
 ## Notes
 
-**General Tree Definitions:**
+#### General Tree Definitions:
 
 * Root has no parents
 * Leaf has no children
@@ -43,7 +44,7 @@
 
 <br> 
 
-**Traversals:**
+#### Traversals:
 
 * Pre-order: visit root, visit all left subtree, visit all right subtree
 * Post-order: visit all left subtree, visit all right subtree, visit root
@@ -52,7 +53,7 @@
 
 <br> 
 
-**Binary Search tree Definition:**
+#### Binary Search tree Definition:
 
 Insertion/Removal comparable to a linked list with the search capabilities associated with binary search on an ordered array 
 
@@ -62,15 +63,33 @@ Insertion/Removal comparable to a linked list with the search capabilities assoc
 
 <br> 
 
-**Balanced BST:**
+#### Balanced BST:
 
 * |LeftHeight - RightHeight| <= 1
 * Heights ~= `log(n)` 
 
 <br> 
 
-**Tries:**
+#### Tries:
 
 * Comes from reTRIEval
 * Structure of the key helps identify where the value is
 * Not a BST (can have more than two child nodes)
+
+<br> 
+
+#### Red/black tree:
+
+https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/
+ 
+* Self balancing **binary search tree**
+* Each node has an extra bit interpreted as the colour
+* Colour bit is used to ensure the tree remains approximately balanced during insertion/deletion
+* Guaranteed searching in O(log n)
+* Insertion + deletion + rearrage also = O(log n)
+* The root is black
+* Every leaf is black
+* If a node is red, both children are black
+
+Insert: https://en.wikipedia.org/wiki/Red%E2%80%93black_tree#Insertion
+Removal: https://en.wikipedia.org/wiki/Red%E2%80%93black_tree#Removal
