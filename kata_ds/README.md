@@ -67,7 +67,7 @@ Consider k-th element of the array:
 
 <br>
 
-## Complexity
+## Common Complexities
 
 Charts from http://bigocheatsheet.com/
 
