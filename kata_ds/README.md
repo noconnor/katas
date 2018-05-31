@@ -65,3 +65,18 @@ Consider k-th element of the array:
 |:----|:------|:--------|
 |O(n*log n)|O(n*log n)|O(n*log n)|
 
+<br>
+
+## Complexity
+
+Charts from http://bigocheatsheet.com/
+
+![Complexity Overview](src/main/resources/complexity_chart.png?raw=true)
+
+<br>
+
+![Structure Complexity Overview](src/main/resources/DS_complexities.png?raw=true)
+
+<br>
+
+![Sorting Complexity Overview](src/main/resources/sorting_complexities.png?raw=true)
