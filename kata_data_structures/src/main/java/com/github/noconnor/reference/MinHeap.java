@@ -16,13 +16,13 @@ public class MinHeap<E extends Comparable<? super E>> {
         buildHeap();
     }
 
-
     public void insert(E value) {
         if (size == heap.length - 1) {
             // increase heap size
+            throw new IllegalStateException("No more space in heap");
         }
-        // Add value to end of heap
 
+        // Add value to end of heap
         int pos = ++size;
 
         // percolate up to find position in heap
@@ -32,7 +32,6 @@ public class MinHeap<E extends Comparable<? super E>> {
         }
         heap[pos] = value;
     }
-
 
     public E deleteMin() {
         // In a min heap, root will be min
@@ -76,7 +75,6 @@ public class MinHeap<E extends Comparable<? super E>> {
         heap[parentIndex] = valueAtIndex;
     }
 
-
     public String toString() {
         StringBuilder builder = new StringBuilder("\n");
         inOrder(1, builder, 0);
@@ -107,7 +105,6 @@ public class MinHeap<E extends Comparable<? super E>> {
         }
     }
 
-
     public static void main(String[] args) {
         MinHeap<Integer> heap = new MinHeap<>(100);
         heap.insert(22);
@@ -121,8 +118,7 @@ public class MinHeap<E extends Comparable<? super E>> {
         heap.deleteMin();
         System.out.println(heap);
 
-
-        MinHeap<String> stringHeap = new MinHeap<>(new String[]{"d","z","a","f","b","y","a"});
+        MinHeap<String> stringHeap = new MinHeap<>(new String[]{"d", "z", "a", "f", "b", "y", "a"});
         System.out.println(stringHeap);
 
     }
