@@ -1,5 +1,10 @@
 package com.github.noconnor.reference;
 
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.junit.MatcherAssert.assertThat;
+
+import java.util.Arrays;
+
 public class MinHeap<E extends Comparable<? super E>> {
 
     private E[] heap;
@@ -42,6 +47,26 @@ public class MinHeap<E extends Comparable<? super E>> {
         percolateDown(1);
         return min;
     }
+
+    public void heapSort(E[] array) {
+        size = array.length;
+        heap = (E[]) new Comparable[array.length + 1];
+        System.arraycopy(array, 0, heap, 1, array.length);
+        buildHeap();
+
+        for (int i = size; i > 0; i--) {
+            E temp = heap[i];
+            heap[i] = heap[1];
+            heap[1] = temp;
+            size--;
+            percolateDown(1);
+        }
+
+        for (int k = 0; k < heap.length - 1; k++) {
+            array[k] = heap[heap.length - 1 - k];
+        }
+    }
+
 
     private void buildHeap() {
         // (size / 2) will be the parent of the last entry in the heap
@@ -121,6 +146,12 @@ public class MinHeap<E extends Comparable<? super E>> {
         MinHeap<String> stringHeap = new MinHeap<>(new String[]{"d", "z", "a", "f", "b", "y", "a"});
         System.out.println(stringHeap);
 
+        MinHeap<Integer> sorter = new MinHeap<>(100);
+        Integer[] ints = new Integer[]{55, 66, 7, 33, 4, 21, 9, 6, 1, 1};
+        sorter.heapSort(ints);
+        System.out.println(Arrays.asList(ints));
+
+        assertThat(ints, is(new Integer[]{1, 1, 4, 6, 7, 9, 21, 33, 55, 66}));
     }
 
 }
