@@ -44,7 +44,7 @@ public class LinkedList<E extends Comparable<? super E>> {
   }
 
   public void set(int index, E data) {
-    if (index < 0 || index > size) {
+    if (index < 0 || index >= size) {
       throw new IllegalArgumentException("Index is invalid");
     }
 
