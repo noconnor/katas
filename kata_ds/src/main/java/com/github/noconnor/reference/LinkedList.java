@@ -73,8 +73,8 @@ public class LinkedList<E extends Comparable<? super E>> {
 
     ListNode<E> node = new ListNode<>(data);
 
-    node.next = head.next;
-    node.prev = head;
+    node.next = tail;
+    node.prev = tail.prev;
     node.next.prev = node;
     node.prev.next = node;
 
@@ -126,12 +126,14 @@ public class LinkedList<E extends Comparable<? super E>> {
     System.out.println(list);
     list.set(0, 567);
     System.out.println(list);
-    list.set(list.size(), 67);
+    list.set(list.size() - 1, 67);
+    System.out.println(list);
+    list.add(33);
     System.out.println(list);
 
     assertThat(list.get(0), is(567));
-    assertThat(list.get(list.size() - 1), is(67));
-    assertThat(list.get(3), is(3));
+    assertThat(list.get(list.size() - 1), is(33));
+    assertThat(list.get(3), is(76));
   }
 
 
