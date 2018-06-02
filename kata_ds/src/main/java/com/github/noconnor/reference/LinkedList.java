@@ -14,12 +14,6 @@ public class LinkedList<E extends Comparable<? super E>> {
     public ListNode(E data) {
       this.data = data;
     }
-
-    public ListNode(E data, ListNode<E> prev) {
-      this(data);
-      this.next = prev.next;
-      prev.next = this;
-    }
   }
 
   private ListNode<E> head;
@@ -42,15 +36,11 @@ public class LinkedList<E extends Comparable<? super E>> {
       throw new IllegalArgumentException("index must be valid");
     }
     ListNode<E> curr = head.next; // skip sentinel
-    int count = 0;
-    while (curr != null) {
-      if (count == index) {
-        return curr.data;
-      }
+    for (int i = 0; i < index && curr != null; i++) {
       curr = curr.next;
-      count++;
     }
-    return null;
+
+    return curr == null ? null : curr.data;
   }
 
   public void set(int index, E data) {
@@ -63,22 +53,19 @@ public class LinkedList<E extends Comparable<? super E>> {
     }
 
     ListNode<E> curr = head.next; // skip sentinel
-    int i = 0;
-    while (curr != null) {
-      if (i == index) {
-        ListNode<E> node = new ListNode<>(data);
-        // order important
-        node.next = curr;
-        node.prev = curr.prev;
-        node.next.prev = node;
-        node.prev.next = node;
 
-        size++;
-        break;
-      }
+    for (int i = 0; i < index && curr.next != null; i++) {
       curr = curr.next;
-      i++;
     }
+
+    ListNode<E> node = new ListNode<>(data);
+    // order important
+    node.next = curr;
+    node.prev = curr.prev;
+    node.next.prev = node;
+    node.prev.next = node;
+
+    size++;
   }
 
   public void add(E data) {
@@ -98,7 +85,7 @@ public class LinkedList<E extends Comparable<? super E>> {
     if (data == null) throw new NullPointerException("Data cannot be null");
 
     ListNode curr = head.next; // skip sentinel
-    while (curr != null) {
+    for (int i = 0; i < size && curr != null; curr = curr.next) {
       if (data.equals(curr.data)) {
         curr.prev.next = curr.next;
         if (curr.next != null) {
@@ -107,7 +94,6 @@ public class LinkedList<E extends Comparable<? super E>> {
         size--;
         break;
       }
-      curr = curr.next;
     }
   }
 
