@@ -14,6 +14,15 @@ public class LinkedList<E extends Comparable<? super E>> {
     public ListNode(E data) {
       this.data = data;
     }
+
+    public ListNode(E data, ListNode<E> prev) {
+      this(data);
+      // order important
+      this.next = prev;
+      this.prev = next.prev;
+      this.next.prev = this;
+      this.prev.next = this;
+    }
   }
 
   private ListNode<E> head;
@@ -58,39 +67,44 @@ public class LinkedList<E extends Comparable<? super E>> {
       curr = curr.next;
     }
 
-    ListNode<E> node = new ListNode<>(data);
-    // order important
-    node.next = curr;
-    node.prev = curr.prev;
-    node.next.prev = node;
-    node.prev.next = node;
-
+    new ListNode<>(data, curr);
     size++;
   }
 
   public void add(E data) {
     if (data == null) throw new NullPointerException("Data cannot be null");
 
-    ListNode<E> node = new ListNode<>(data);
-
-    node.next = tail;
-    node.prev = tail.prev;
-    node.next.prev = node;
-    node.prev.next = node;
-
+    new ListNode<>(data, tail);
     size++;
+  }
+
+  public void removeAtIndex(int index) {
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException("Index is out of bounds");
+    }
+
+    ListNode<E> curr = head.next;
+
+    for (int i = 0; i < index && curr.next != null; i++) {
+      curr = curr.next;
+    }
+
+    curr.prev.next = curr.next;
+    if (curr.next != null) {
+      curr.next.prev = curr.prev;
+    }
+    size--;
+
   }
 
   public void remove(E data) {
     if (data == null) throw new NullPointerException("Data cannot be null");
 
     ListNode curr = head.next; // skip sentinel
-    for (int i = 0; i < size && curr != null; curr = curr.next) {
+    for (int i = 0; i < size && curr.next != null; curr = curr.next) {
       if (data.equals(curr.data)) {
         curr.prev.next = curr.next;
-        if (curr.next != null) {
-          curr.next.prev = curr.prev;
-        }
+        curr.next.prev = curr.prev;
         size--;
         break;
       }
@@ -129,10 +143,12 @@ public class LinkedList<E extends Comparable<? super E>> {
     System.out.println(list);
     list.add(33);
     System.out.println(list);
+    list.removeAtIndex(2);
+    System.out.println(list);
 
     assertThat(list.get(0), is(567));
     assertThat(list.get(list.size() - 1), is(33));
-    assertThat(list.get(3), is(76));
+    assertThat(list.get(3), is(99));
   }
 
 }
