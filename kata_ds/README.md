@@ -4,6 +4,8 @@
 2. [Implement a min-heap](src/main/java/com/github/noconnor/reference/MinHeap.java)
 3. [Implement a max-heap](src/main/java/com/github/noconnor/reference/MaxHeap.java)
 4. [Implement a stack](src/main/java/com/github/noconnor/reference/Stack.java)
+5. [Implement a linked list](src/main/java/com/github/noconnor/reference/LinkedList.java)
+
 
 <br>
 
@@ -66,6 +68,15 @@ Consider k-th element of the array:
 |O(n*log n)|O(n*log n)|O(n*log n)|
 
 <br>
+
+**Linked List**
+
+List Versus Linked list
+* List insertion time (worst case) O(n)
+* Doubly linked list has next and previous pointers, store pointer to head and tail of list
+* Singly linked list only has next pointer, typically only store pointer to head
+* Sentinel nodes, dummy nodes inserted at start and end of list, don't store any data and always present even when list is empty, pointed too by head and tail references 
+
 
 ## Common Complexities
 
