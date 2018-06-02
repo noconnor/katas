@@ -97,7 +97,6 @@ public class LinkedList<E extends Comparable<? super E>> {
     }
   }
 
-
   public String toString() {
     StringBuilder builder = new StringBuilder();
     ListNode<E> curr = head.next;
@@ -135,6 +134,5 @@ public class LinkedList<E extends Comparable<? super E>> {
     assertThat(list.get(list.size() - 1), is(33));
     assertThat(list.get(3), is(76));
   }
-
 
 }
