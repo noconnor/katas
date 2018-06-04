@@ -1,10 +1,11 @@
 ## Objective 
 
 1. [Implement a hashtable (use chaining)](src/main/java/com/github/noconnor/reference/ChainedHashTable.java)
-2. [Implement a min-heap](src/main/java/com/github/noconnor/reference/MinHeap.java)
-3. [Implement a max-heap](src/main/java/com/github/noconnor/reference/MaxHeap.java)
-4. [Implement a stack](src/main/java/com/github/noconnor/reference/Stack.java)
-5. [Implement a linked list](src/main/java/com/github/noconnor/reference/LinkedList.java)
+2. Implement a hashtable (use linear probing)
+3. [Implement a min-heap](src/main/java/com/github/noconnor/reference/MinHeap.java)
+4. [Implement a max-heap](src/main/java/com/github/noconnor/reference/MaxHeap.java)
+5. [Implement a stack](src/main/java/com/github/noconnor/reference/Stack.java)
+6. [Implement a linked list](src/main/java/com/github/noconnor/reference/LinkedList.java)
 
 
 <br>
@@ -17,6 +18,28 @@ https://algs4.cs.princeton.edu/34hash/
 
 * [SeparateChainingLiteHashST](https://algs4.cs.princeton.edu/34hash/SeparateChainingLiteHashST.java.html)
 * [Chained HashTable](http://www.algolist.net/Data_structures/Hash_table/Chaining)
+
+Rue of thumb, resize hash table when ~= 70% full
+
+No ordering in hashtable & resizing is expensive.
+
+HashSet : one "value" stored, common methods `add` and `contains`
+HashMap : two values stored, the key and the value, common methods `get` and`put`
+ 
+*Hash functions:*
+* K mod n is a common hash function (n is the size of the hash table array), remainder will always be in the range
+`0` -> `N-1` 
+
+*Collision handling:*
+* linear probing (or open addressing): on collision, find next open spot
+* Separate chaining: keep list instead of single element
+
+
+| Pros | Cons|
+|:-----|:----|
+|Average `O(1)` insert & remove| Re-sizing cost|
+| - | No ordering|
+
 
 <br>
 
