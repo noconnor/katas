@@ -23,7 +23,7 @@ reverse order
 ## Edit Distance Algorithm
 
 ```
-// Essentiall a BFS
+// BFS
 Create queue to hold words to explore
 Create set of visited words
 Create a list to hold real words
