@@ -4,7 +4,7 @@
 2. [Implement quick sort algorithm](src/main/java/com/github/noconnor/reference/QuickSort.java)
 3. [Implement merge sort algorithm](src/main/java/com/github/noconnor/reference/MergeSort.java)
 4. [Implement a selection sort](src/main/java/com/github/noconnor/reference/SelectionSort.java)
-5. Implement an insertion sort
+5. [Implement an insertion sort](src/main/java/com/github/noconnor/reference/InsertionSort.java)
 
 <br>
 
@@ -19,7 +19,7 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 |Quick Sort |O(n^2)     |O(n*log(n))|O(n*log(n))|O(log n)|
 |Merge Sort |O(n*log(n))|O(n*log(n))|O(n*log(n))|O(n)|
 |Selection Sort |O(n^2)|O(n^2)|O(n^2)|O(1)|
-|Insertion Sort |||||
+|Insertion Sort |O(n^2)|O(n)|O(n^2)|O(n)|
 
 
 <br>
@@ -35,7 +35,9 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 * [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
   * [Selection sort java reference](https://www.geeksforgeeks.org/selection-sort/)
   * **Overview:** Divide dataset into subsets (sorted and unsorted). Repeatedly find smallest element in unsorted set and move to correct position in sorted section of dataset.
-* [Insertion Sort]
+* [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
+  * [Insertion sort java reference](https://www.geeksforgeeks.org/insertion-sort/)
+  * **Overview:** Like manually sorting a hand of cards. At each iteration, remove one entry from input data, find the location it belongs to within the sorted list and insert it. Repeat. 
 
 <br>
 
@@ -46,8 +48,8 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 |Bubble Sort|* Good on extremely small datasets|* O(n^2) time complexity|
 |Merge Sort|* Better than quick sort when sorting linked lists<br> * Uses less comparisons than Quick sort|* Worst case memory is O(n)|
 |Quick Sort|* Worst case memory complexity is O(log n)|* Not good if dataset doesn't fit into memory|
-|Selection Sort|* Simple algorithm<br> * Fast for small arrays (faster than merge sort for 10 - 20 elements)|* O(n^2 complexity, therefore inefficient on large datasets|
-|Insertion Sort|||
+|Selection Sort|* Simple algorithm<br> * Fast for small arrays (faster than merge sort for 10 - 20 elements)|* O(n^2) complexity, therefore inefficient on large datasets|
+|Insertion Sort|* Aimple algorithm<br> * Fast for small arrays (faster than selection sort)|* O(n^2) complexity, therefore inefficient on large datasets|
 
 <br>
 
