@@ -28,13 +28,16 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 
 * [Bubble Sort](https://en.wikipedia.org/wiki/Sorting_algorithm#Bubble_sort)
   * [Bubble sort java reference](https://www.mkyong.com/java/java-bubble-sort-example/)
+  * **Overview:** Repeatedly iterate over input data set and compare adjacent entries, swap entries if they are in teh wrong order
 * [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
   * [Quick sort java reference](https://www.geeksforgeeks.org/quick-sort/) 
+  * **Overview:** Pick a "pivot point", reorder data set to all smaller elements come before the pivot point, larger values after the pivot point. Recursively apply this to sub sets either side of the pivot.
 * [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
   * [Merge sort java reference](https://www.geeksforgeeks.org/merge-sort/)
+  * **Overview:** Stable sort (preserves the input order of equal elements). Divide and conquer. Divide unsorted list into n sub-lists of 1 element, repeatedly merge the sublists, sorting as merging.  
 * [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
   * [Selection sort java reference](https://www.geeksforgeeks.org/selection-sort/)
-  * **Overview:** Divide dataset into subsets (sorted and unsorted). Repeatedly find smallest element in unsorted set and move to correct position in sorted section of dataset.
+  * **Overview:** Divide data set into subsets (sorted and unsorted). Repeatedly find smallest element in unsorted set and move to correct position in sorted section of data set.
 * [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
   * [Insertion sort java reference](https://www.geeksforgeeks.org/insertion-sort/)
   * **Overview:** Like manually sorting a hand of cards. At each iteration, remove one entry from input data, find the location it belongs to within the sorted list and insert it. Repeat. 
@@ -47,7 +50,7 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 |:--------|:-----|:----|
 |Bubble Sort|* Good on extremely small datasets|* O(n^2) time complexity|
 |Merge Sort|* Better than quick sort when sorting linked lists<br> * Uses less comparisons than Quick sort|* Worst case memory is O(n)|
-|Quick Sort|* Worst case memory complexity is O(log n)|* Not good if dataset doesn't fit into memory|
+|Quick Sort|* Worst case memory complexity is O(log n)<br> * can be 2-3 times faster than merge sort and heap sort|* Not good if dataset doesn't fit into memory|
 |Selection Sort|* Simple algorithm<br> * Fast for small arrays (faster than merge sort for 10 - 20 elements)|* O(n^2) complexity, therefore inefficient on large datasets|
 |Insertion Sort|* Aimple algorithm<br> * Fast for small arrays (faster than selection sort)|* O(n^2) complexity, therefore inefficient on large datasets|
 
