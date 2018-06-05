@@ -3,18 +3,13 @@
 ## Objective 
 
 * [Implement Linear Search](https://www.geeksforgeeks.org/linear-search/)
-
-Problem: Given an array arr[] of n elements, write a function to search a given element x in arr[].
-
-<br>
-
+  * Problem: Given an array arr[] of n elements, write a function to search a given element x in arr[].
 * [Implement Binary Search](https://www.geeksforgeeks.org/binary-search/)
-
-Source: https://www.codewars.com/kata/binary-search/javascript
-        http://en.wikipedia.org/wiki/Binary_search_algorithm
-
-Binary search: logarithmic time [O(log n)](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time)
+  * Source: https://www.codewars.com/kata/binary-search/javascript and http://en.wikipedia.org/wiki/Binary_search_algorithm
+  * Binary search: logarithmic time [O(log n)](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time)
               
+
+## Binary Search Notes
 
 A binary search algorithm is a way to look for the index of a certain value in a sorted array.
 The algorithm will progressively cut the original array into smaller and smaller chunks until it finds the desired value. 
