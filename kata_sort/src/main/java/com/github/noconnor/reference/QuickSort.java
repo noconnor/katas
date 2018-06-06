@@ -23,8 +23,9 @@ public class QuickSort {
 
     private int partition(int[] array, int low, int high) {
 
-        // scan thru the sub array with index j
+        // scan through the sub array with index j
         // follow with index i, only incrementing if entry at j is <= than pivot
+        // when i is incremented, swap i with j
         int pivot = array[high];
         int i = low - 1;
         for (int j = low; j < high; j++) {
