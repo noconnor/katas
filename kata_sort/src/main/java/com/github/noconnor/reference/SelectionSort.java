@@ -8,6 +8,9 @@ public class SelectionSort {
     private int iterations;
 
     private void sort(int[] array) {
+        // scan forward through array with index i
+        // starting always one after i, find minIndex using j
+        // end of loop, replace i with min index element
         int n = array.length;
         for (int i = 0; i < n - 1; i++) {
             int minValueIndex = i;
