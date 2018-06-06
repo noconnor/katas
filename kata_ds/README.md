@@ -23,7 +23,7 @@ Rue of thumb, resize hash table when ~= 70% full
 
 No ordering in hashtable & resizing is expensive.
 
-HashSet : one "value" stored, common methods `add` and `contains`
+HashSet : one "value" stored, common methods `add` and `contains` <br>
 HashMap : two values stored, the key and the value, common methods `get` and`put`
  
 *Hash functions:*

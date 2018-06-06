@@ -22,6 +22,9 @@ public class QuickSort {
     }
 
     private int partition(int[] array, int low, int high) {
+
+        // scan thru the sub array with index j
+        // follow with index i, only incrementing if entry at j is <= than pivot
         int pivot = array[high];
         int i = low - 1;
         for (int j = low; j < high; j++) {
@@ -33,10 +36,11 @@ public class QuickSort {
             }
             iterations++;
         }
+        // move pivot to new location
         int buffer = array[i + 1];
         array[i + 1] = array[high];
         array[high] = buffer;
-
+        // return pivot index
         return i + 1;
     }
 
