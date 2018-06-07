@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.nullValue;
 
 public class ChainedHashTable<K, V> {
 
+  // singly linked
   static class Node {
     Object key;
     Object value;
@@ -66,7 +67,7 @@ public class ChainedHashTable<K, V> {
         if (previous != null) {
           previous.next = x.next;
         } else {
-          table[index] = x.next;;
+          table[index] = x.next;
         }
         n--;
         return;
