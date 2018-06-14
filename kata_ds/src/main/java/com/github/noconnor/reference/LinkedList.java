@@ -3,125 +3,122 @@ package com.github.noconnor.reference;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.junit.MatcherAssert.assertThat;
 
-public class LinkedList<E extends Comparable<? super E>> {
+public class LinkedList<E> {
 
-  // recursive data type
-  private static class ListNode<E> {
-    ListNode<E> prev;
-    ListNode<E> next;
+  static class Node<E> {
     E data;
-
-    public ListNode(E data) {
-      this.data = data;
+    Node<E> next;
+    Node<E> prev;
+    Node(E data){
+      this.data=data;
     }
-
-    public ListNode(E data, ListNode<E> prev) {
-      this(data);
-      // order important
-      this.next = prev;
-      this.prev = next.prev;
-      this.next.prev = this;
-      this.prev.next = this;
+    Node(E data, Node<E> neighbour){
+      this.data=data;
+      this.next=neighbour;
+      this.prev=neighbour.prev;
+      this.next.prev=this;
+      this.prev.next=this;
     }
   }
+  // sentinels
+  private Node<E> head;
+  private Node<E> tail;
 
-  private ListNode<E> head;
-  private ListNode<E> tail;
-  private int size = 0;
+  private int size;
 
-  public LinkedList() {
-    head = new ListNode<>(null);
-    tail = new ListNode<>(null);
-    head.next = tail;
-    tail.prev = head;
+  public LinkedList(){
+    this.head=new Node<>(null);
+    this.tail=new Node<>(null);
+    this.head.next=tail;
+    this.tail.prev=head;
   }
 
-  public int size() {
-    return size;
+  public E get(int index){
+    isValidIndex(index);
+    Node<E> curr = head.next;
+    for(int i=0; i<index && curr.next!=null; i++){
+      curr=curr.next;
+    }
+    return curr.data;
   }
 
-  public E get(int index) {
-    if (index < 0 || index >= size) {
-      throw new IllegalArgumentException("index must be valid");
-    }
-    ListNode<E> curr = head.next; // skip sentinel
-    for (int i = 0; i < index && curr != null; i++) {
-      curr = curr.next;
-    }
-
-    return curr == null ? null : curr.data;
-  }
-
-  public void set(int index, E data) {
-    if (index < 0 || index >= size) {
-      throw new IllegalArgumentException("Index is invalid");
-    }
-
-    if (data == null) {
-      throw new NullPointerException("Data cannot be null");
-    }
-
-    ListNode<E> curr = head.next; // skip sentinel
-
-    for (int i = 0; i < index && curr.next != null; i++) {
-      curr = curr.next;
-    }
-
-    new ListNode<>(data, curr);
+  public void add(E data){
+    isValidData(data);
     size++;
+    // new data is added to the tail
+    new Node<>(data, tail);
   }
 
-  public void add(E data) {
-    if (data == null) throw new NullPointerException("Data cannot be null");
-
-    new ListNode<>(data, tail);
+  public void add(int index, E data){
+    isValidData(data);
+    Node<E> curr = head.next;
+    for(int i=0; i<index && curr.next!=null; i++){
+      curr=curr.next;
+    }
     size++;
+    new Node<>(data, curr);
   }
 
-  public void removeAtIndex(int index) {
-    if (index < 0 || index >= size) {
-      throw new IndexOutOfBoundsException("Index is out of bounds");
+  public void set(int index, E data){
+    isValidIndex(index);
+    isValidData(data);
+    Node<E> curr = head.next;
+    for(int i=0; i<index && curr.next!=null; i++){
+      curr=curr.next;
     }
+    curr.data=data;
+  }
 
-    ListNode<E> curr = head.next;
-
-    for (int i = 0; i < index && curr.next != null; i++) {
-      curr = curr.next;
+  public E remove(int index){
+    isValidIndex(index);
+    Node<E> curr = head.next;
+    for(int i=0; i<index && curr.next!=null; i++){
+      curr=curr.next;
     }
-
-    curr.prev.next = curr.next;
-    if (curr.next != null) {
+    curr.prev.next=curr.next;
+    if(curr.next!=null){
       curr.next.prev = curr.prev;
     }
     size--;
-
+    return curr.data;
   }
 
-  public void remove(E data) {
-    if (data == null) throw new NullPointerException("Data cannot be null");
-
-    ListNode curr = head.next; // skip sentinel
-    for (int i = 0; i < size && curr.next != null; curr = curr.next) {
-      if (data.equals(curr.data)) {
-        curr.prev.next = curr.next;
-        curr.next.prev = curr.prev;
+  public E remove(E data){
+    isValidData(data);
+    Node<E> curr= head.next;
+    for(int i=0; i<size && curr.next!=null; i++){
+      if(data.equals(curr.data)){
+        curr.next.prev=curr.prev;
+        curr.prev.next=curr.next;
         size--;
-        break;
+        return curr.data;
       }
+      curr=curr.next;
     }
+    return null;
   }
 
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
-    ListNode<E> curr = head.next;
-    String prefix = "";
-    while (curr != tail) {
-      builder.append(prefix);
-      builder.append(curr.data);
-      prefix = ",";
-      curr = curr.next;
+  public int size(){ return size; }
+
+  public String toString(){
+    StringBuilder sb = new StringBuilder();
+    String prefix="";
+    Node<E> curr = head.next;
+    while(curr.next!=null){
+      sb.append(prefix);
+      sb.append(curr.data);
+      prefix="->";
+      curr=curr.next;
     }
-    return builder.toString();
+    return sb.toString();
+  }
+
+  private void isValidData(E data){
+    if(data==null) throw new NullPointerException("Invalid data");
+  }
+
+  private void isValidIndex(int index){
+    if(index<0 || index>=size) throw new IndexOutOfBoundsException("Invalid index");
   }
 
   public static void main(String[] args) {
@@ -133,7 +130,7 @@ public class LinkedList<E extends Comparable<? super E>> {
     list.add(3);
 
     System.out.println(list);
-    list.remove(55);
+    list.remove(new Integer(55));
     System.out.println(list);
     list.set(3, 99);
     System.out.println(list);
@@ -143,12 +140,11 @@ public class LinkedList<E extends Comparable<? super E>> {
     System.out.println(list);
     list.add(33);
     System.out.println(list);
-    list.removeAtIndex(2);
+    list.remove(2);
     System.out.println(list);
 
     assertThat(list.get(0), is(567));
     assertThat(list.get(list.size() - 1), is(33));
-    assertThat(list.get(3), is(99));
   }
 
 }
