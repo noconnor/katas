@@ -14,7 +14,7 @@ public class Stack<E extends Comparable<? extends E>> {
     }
 
     public void push(E element) {
-        if (top == stack.length) {
+        if (top == stack.length-1) {
             throw new IllegalStateException("Stack is full");
         }
         stack[++top] = element;
