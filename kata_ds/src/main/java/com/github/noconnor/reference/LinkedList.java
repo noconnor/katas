@@ -142,6 +142,8 @@ public class LinkedList<E> {
     System.out.println(list);
     list.remove(2);
     System.out.println(list);
+    list.add(2, 678);
+    System.out.println(list);
 
     assertThat(list.get(0), is(567));
     assertThat(list.get(list.size() - 1), is(33));
