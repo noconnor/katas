@@ -3,8 +3,6 @@ package com.github.noconnor.reference;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.junit.MatcherAssert.assertThat;
 
-import java.util.Arrays;
-
 @SuppressWarnings("Duplicates")
 public class MaxHeap<E extends Comparable<? super E>> {
 
@@ -96,15 +94,15 @@ public class MaxHeap<E extends Comparable<? super E>> {
 
     public String toString() {
         StringBuilder builder = new StringBuilder("\n");
-        inOrder(1, 0, builder);
+        reverseInOrder(1, 0, builder);
         return builder.toString();
     }
 
-    private void inOrder(int index, int level, StringBuilder builder) {
-        if (index < heap.length && heap[index] != null) {
+    private void reverseInOrder(int index, int level, StringBuilder builder) {
+        if (index > 0 && index <= size) {
             int nextLevel = level + 1;
 
-            inOrder(2 * index + 1, nextLevel, builder);
+            reverseInOrder(2 * index + 1, nextLevel, builder);
             if (level == 0) {
                 builder.append("(");
                 builder.append(heap[index]);
@@ -117,7 +115,7 @@ public class MaxHeap<E extends Comparable<? super E>> {
                 builder.append(heap[index]);
                 builder.append(")\n");
             }
-            inOrder(2 * index, nextLevel, builder);
+            reverseInOrder(2 * index, nextLevel, builder);
         }
     }
 

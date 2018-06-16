@@ -30,7 +30,7 @@ public class ChainedHashTable<K, V> {
   }
 
   public V get(K key) {
-    if (key == null) return null;
+    validateKey(key);
 
     int index = calculateIndex(key);
     for (Node x = table[index]; x != null; x = x.next) {
@@ -43,8 +43,7 @@ public class ChainedHashTable<K, V> {
   }
 
   public void put(K key, V value) {
-    if (key == null) throw new IllegalArgumentException("Key cannot be null");
-
+    validateKey(key);
     int index = calculateIndex(key);
 
     for (Node x = table[index]; x != null; x = x.next) {
@@ -58,7 +57,7 @@ public class ChainedHashTable<K, V> {
   }
 
   public void remove(K key) {
-    if (key == null) return;
+    validateKey(key);
 
     int index = calculateIndex(key);
     Node previous = null;
@@ -84,6 +83,9 @@ public class ChainedHashTable<K, V> {
     return (key.hashCode() & 0x7fffffff) % capacity;
   }
 
+  private void validateKey(K key) {
+    if (key == null) throw new IllegalArgumentException("Key cannot be null");
+  }
 
   public static void main(String[] args) {
     ChainedHashTable<String, String> table = new ChainedHashTable<>(16);
