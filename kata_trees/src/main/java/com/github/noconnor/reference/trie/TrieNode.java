@@ -27,7 +27,7 @@ public class TrieNode {
 
   public void setText(String text) {
     this.text = text;
-    this.isWord = true;
+    this.isWord = text != null;
   }
 
   public Map<Character, TrieNode> getChildren() {
