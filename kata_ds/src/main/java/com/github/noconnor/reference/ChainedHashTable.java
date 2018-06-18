@@ -75,6 +75,28 @@ public class ChainedHashTable<K, V> {
     }
   }
 
+  public String toString(){
+    StringBuilder sb = new StringBuilder("\n");
+    for(int i=0; i<table.length; i++){
+      if(table[i]!=null){
+        Node curr=table[i];
+        String prefix="";
+        do{
+          sb.append(prefix);
+          sb.append("[");
+          sb.append(curr.key);
+          sb.append(":");
+          sb.append(curr.value);
+          sb.append("]");
+          prefix="->";
+          curr=curr.next;
+        } while(curr!=null);
+        sb.append("\n");
+      }
+    }
+    return sb.toString();
+  }
+
   public int size() {
     return n;
   }
@@ -93,6 +115,7 @@ public class ChainedHashTable<K, V> {
     table.put("AaAaBB", "Value2");
     table.put("AaBBAa", "Value3");
     table.put("Test",   "Value4");
+    System.out.println(table);
 
     assertThat(table.get("AaAaAa"), is("Value1"));
     assertThat(table.get("AaAaBB"), is("Value2"));
