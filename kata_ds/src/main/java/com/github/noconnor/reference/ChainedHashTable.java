@@ -79,19 +79,19 @@ public class ChainedHashTable<K, V> {
     StringBuilder sb = new StringBuilder("\n");
     for(int i=0; i<table.length; i++){
       if(table[i]!=null){
-        Node curr=table[i];
         String prefix="";
-        do{
+        for(Node x=table[i]; x!=null; x=x.next) {
           sb.append(prefix);
           sb.append("[");
-          sb.append(curr.key);
+          sb.append(x.key);
           sb.append(":");
-          sb.append(curr.value);
+          sb.append(x.value);
           sb.append("]");
-          prefix="->";
-          curr=curr.next;
-        } while(curr!=null);
+          prefix = "->";
+        }
         sb.append("\n");
+      } else {
+        sb.append("-\n");
       }
     }
     return sb.toString();
