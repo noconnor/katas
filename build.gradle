@@ -37,3 +37,6 @@ project(':kata_sort'){
 
 project(':kata_trees'){
 }
+
+project(':kata_sql'){
+}

@@ -6,4 +6,5 @@ include ':kata_strings',
         ':kata_sort',
         ':kata_ds',
         ':kata_graphs',
-        ':kata_trees'
+        ':kata_trees',
+        ':kata_sql'
