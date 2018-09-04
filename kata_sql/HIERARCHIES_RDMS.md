@@ -83,3 +83,113 @@ This approach adds a left and right attribute to the model data.
 Combines the simplicity of the adjacency list table format with improved performance for move/insert/deletes
 
  
+#### Example: [Closure table using PostgreSQL](https://dirtsimple.org/2010/11/simplest-way-to-do-tree-based-queries.html)
+
+```
+CREATE TABLE comments (
+  id serial PRIMARY KEY,
+  content VARCHAR(500) NOT NULL,
+  parent_id INTEGER,
+  foreign key (parent_id) references comments(id)
+);
+
+CREATE TABLE comments_closure (
+  parent_id INTEGER NOT NULL,
+  child_id INTEGER NOT NULL,
+  depth INTEGER NOT NULL,
+  foreign key (parent_id) references comments(id),
+  foreign key (child_id) references comments(id)
+);
+
+-- set up comments
+INSERT INTO comments(content, parent_id) VALUES ('Hello world', NULL);
+INSERT INTO comments(content, parent_id) VALUES ('Hello', 1);
+INSERT INTO comments(content, parent_id) VALUES ('Hi', 1);
+INSERT INTO comments(content, parent_id) VALUES ('Hey', 2);
+INSERT INTO comments(content, parent_id) VALUES ('Bye', 4);
+INSERT INTO comments(content, parent_id) VALUES ('What time is it?', NULL);
+INSERT INTO comments(content, parent_id) VALUES ('7 O''Clock', 6);
+
+ id |     content      | parent_id
+----+------------------+-----------
+  1 | Hello world      |
+  2 | Hello            |         1
+  3 | Hi               |         1
+  4 | Hey              |         2
+  5 | Bye              |         4
+  6 | What time is it? |
+  7 | 7 O'Clock        |         6
+
+-- initialise comments_closure table
+INSERT INTO comments_closure( parent_id, child_id, depth) VALUES (1,1,0);
+INSERT INTO comments_closure( parent_id, child_id, depth) VALUES (2,2,0);
+INSERT INTO comments_closure( parent_id, child_id, depth) VALUES (3,3,0);
+INSERT INTO comments_closure( parent_id, child_id, depth) VALUES (4,4,0);
+INSERT INTO comments_closure( parent_id, child_id, depth) VALUES (5,5,0);
+INSERT INTO comments_closure( parent_id, child_id, depth) VALUES (6,6,0);
+INSERT INTO comments_closure( parent_id, child_id, depth) VALUES (7,7,0);
+
+ parent_id | child_id | depth
+-----------+----------+-------
+         1 |        1 |     0
+         2 |        2 |     0
+         3 |        3 |     0
+         4 |        4 |     0
+         5 |        5 |     0
+         6 |        6 |     0
+         7 |        7 |     0
+
+
+-- add relationship to comments closure, could be a DB trigger
+-- make all parents of :PARENT also parents of all children of :CHILD
+\set PARENT 1
+\set CHILD 2
+INSERT INTO comments_closure (parent_id, child_id, depth)
+SELECT p.parent_id, c.child_id, p.depth+c.depth+1
+FROM comments_closure p, comments_closure c
+WHERE p.child_id = :PARENT and c.parent_id = :CHILD;
+
+-- repeat above for all relationships in comments table
+
+ parent_id | child_id | depth
+-----------+----------+-------
+         1 |        1 |     0
+         2 |        2 |     0
+         3 |        3 |     0
+         4 |        4 |     0
+         5 |        5 |     0
+         6 |        6 |     0
+         1 |        2 |     1
+         1 |        3 |     1
+         2 |        4 |     1
+         1 |        4 |     2
+         4 |        5 |     1
+         2 |        5 |     2
+         1 |        5 |     3
+         7 |        7 |     0
+         6 |        7 |     1
+
+
+
+-- retrieve comment tree
+SELECT c.id, c.content, c.parent_id, cl.depth FROM comments c, comments_closure cl WHERE cl.parent_id = 1 and c.id = cl.child_id;
+
+ id |   content   | parent_id | depth
+----+-------------+-----------+-------
+  1 | Hello world |           |     0
+  2 | Hello       |         1 |     1
+  3 | Hi          |         1 |     1
+  4 | Hey         |         2 |     2
+  5 | Bye         |         4 |     3
+  
+ 
+
+SELECT c.id, c.content, c.parent_id, cl.depth FROM comments c, comments_closure cl WHERE cl.parent_id = 6 and c.id = cl.child_id;
+
+ id |     content      | parent_id | depth
+----+------------------+-----------+-------
+  6 | What time is it? |           |     0
+  7 | 7 O'Clock        |         6 |     1
+
+
+```
