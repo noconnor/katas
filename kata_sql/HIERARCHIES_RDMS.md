@@ -193,3 +193,76 @@ SELECT c.id, c.content, c.parent_id, cl.depth FROM comments c, comments_closure 
 
 
 ```
+
+
+### [Materialized paths](https://evileg.com/en/post/12/)
+
+The full path to the added entry is added to the table.
+
+#### Example: [Materialized paths using PostgreSQL](https://evileg.com/en/post/12/)
+
+```
+
+CREATE TABLE comments (
+  id serial PRIMARY key,
+  content VARCHAR(500),
+  path INTEGER[]
+);
+
+\set PARENT NULL
+INSERT INTO comments(content, path) 
+VALUES('Hello World', (SELECT path FROM comments WHERE id = :PARENT) || (SELECT currval('comments_id_seq')::integer));
+
+\set PARENT 1
+INSERT INTO comments(content, path) 
+VALUES('Hello', (SELECT path FROM comments WHERE id = :PARENT) || (SELECT currval('comments_id_seq')::integer));
+
+\set PARENT NULL
+INSERT INTO comments(content, path) 
+VALUES('What time is it?', (SELECT path FROM comments WHERE id = :PARENT) || (SELECT currval('comments_id_seq')::integer));
+
+\set PARENT 3
+INSERT INTO comments(content, path) 
+VALUES('7 O''Clock', (SELECT path FROM comments WHERE id = :PARENT) || (SELECT currval('comments_id_seq')::integer));
+
+\set PARENT 2
+reddit=# INSERT INTO comments(content, path)
+VALUES('Bye!', (SELECT path FROM comments WHERE id = :PARENT) || (SELECT currval('comments_id_seq')::integer));
+
+
+select * from comments;
+ id |     content      |  path
+----+------------------+---------
+  1 | Hello World      | {1}
+  2 | Hello            | {1,2}
+  3 | What time is it? | {3}
+  4 | 7 O'Clock        | {3,4}
+  5 | Bye!             | {1,2,5}
+
+
+SELECT * FROM comments where path && ARRAY[1];
+ id |   content   |  path
+----+-------------+---------
+  1 | Hello World | {1}
+  2 | Hello       | {1,2}
+  5 | Bye!        | {1,2,5}
+  
+  
+SELECT * FROM comments where path && ARRAY[3];
+ id |     content      | path
+----+------------------+-------
+  3 | What time is it? | {3}
+  4 | 7 O'Clock        | {3,4}
+
+
+-- Delete removes all associated comments
+DELETE FROM comments WHERE path && ARRAY[2];
+
+select * from comments;
+ id |     content      | path
+----+------------------+-------
+  1 | Hello World      | {1}
+  3 | What time is it? | {3}
+  4 | 7 O'Clock        | {3,4}  
+
+```
