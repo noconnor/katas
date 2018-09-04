@@ -3,7 +3,16 @@
 There are a number of ways to represent [hierarchical data in a relational database system](https://stackoverflow.com/questions/4048151/what-are-the-options-for-storing-hierarchical-data-in-a-relational-database/4054033).
 
 
-### [Adjacency lists](https://en.wikipedia.org/wiki/Adjacency_list)
+Contents:
+* [Adjacency lists](#adjacency-lists)
+* [Nested sets](#nested-sets-or-modified-preorder-tree-traversal---mptt)
+* [Closure tables](#closure-tables)
+* [Materialized Paths](#materialized-paths)
+
+
+### Adjacency lists
+
+(Ref: https://en.wikipedia.org/wiki/Adjacency_list)
 
 Simplest approach would be represent that data as an adjacency list (single table containing `id` and `parent_id`).
 
@@ -13,6 +22,7 @@ Simplest approach would be represent that data as an adjacency list (single tabl
 
 [Common Table Expressions](http://malisper.me/postgres-ctes/) can help simplify the querying of hierarchical data stored in an adjacency list format.
 
+<br />
 
 #### Example: [Adjacency list using PostgreSQL](http://malisper.me/understanding-postgres-recursive-ctes/)
 
@@ -65,8 +75,12 @@ SELECT * FROM  comment_tree;
 ```
 
 
+<br />
 
-### [Nested sets](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/) (or Modified Preorder Tree Traversal - MPTT)
+
+### Nested sets or Modified Preorder Tree Traversal - MPTT
+
+(Ref: http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/ )
 
 MPTT, or modified preorder tree traversal, is an efficient way to store hierarchical data in a flat structure.
 
@@ -77,11 +91,17 @@ This approach adds a left and right attribute to the model data.
 *Cons* it's very expensive O(n/2) to move/insert/delete data due to volatile encoding 
 
 
+<br />
 
-### [Closure tables](http://dirtsimple.org/2010/11/simplest-way-to-do-tree-based-queries.html) 
+
+### Closure tables
+
+(Ref: http://dirtsimple.org/2010/11/simplest-way-to-do-tree-based-queries.html)
 
 Combines the simplicity of the adjacency list table format with improved performance for move/insert/deletes
 
+
+<br />
  
 #### Example: [Closure table using PostgreSQL](https://dirtsimple.org/2010/11/simplest-way-to-do-tree-based-queries.html)
 
@@ -194,10 +214,15 @@ SELECT c.id, c.content, c.parent_id, cl.depth FROM comments c, comments_closure 
 
 ```
 
+<br />
 
-### [Materialized paths](https://evileg.com/en/post/12/)
+### Materialized paths
+
+(Ref:https://evileg.com/en/post/12/)
 
 The full path to the added entry is added to the table.
+
+<br />
 
 #### Example: [Materialized paths using PostgreSQL](https://evileg.com/en/post/12/)
 
