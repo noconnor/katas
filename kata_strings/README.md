@@ -8,7 +8,10 @@ Source: https://www.codewars.com/kata/recursive-reverse-string/java
 receives `word` as String and returns the same string in 
 reverse order
 2. Edit distance algorithm: The number of transformations required to turn one string into another string. Implement a spell checker.
-3. Implement word path algorithm. Shortest route from one word to a target word by mutating characters in original word. 
+3. Implement word path algorithm. Shortest route from one word to a target word by mutating characters in original word.
+4. Palindrome: Write a [program](src/main/java/com/github/noconnor/reference/Palindrome.java#L21) to check if a sentence is palindrome or not. You can ignore white spaces and other characters to consider sentence as a palindrome
+5. Palindrome: Write a [program](src/main/java/com/github/noconnor/reference/Palindrome.java#L8) to check if a word is palindrome or not.
+  
 <br />
 
 ## Reverse String Rules
